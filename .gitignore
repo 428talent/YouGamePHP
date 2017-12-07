@@ -1,0 +1,6 @@
+.idea
+composer.lock
+*.log
+.travis.yml
+LICENSE.txt
+
