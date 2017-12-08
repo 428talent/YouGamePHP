@@ -9,6 +9,7 @@
 namespace app\common\model;
 
 
+use think\Config;
 use think\Model;
 
 /**
@@ -22,8 +23,39 @@ use think\Model;
  */
 class AuthModel extends Model
 {
-    protected $table="auth";
-    public function user(){
-        $this->belongsTo("UserModel","user_id");
+    protected $table = "auth";
+
+    public function user()
+    {
+        $this->belongsTo("UserModel", "user_id");
+    }
+
+    /**
+     * 生成授权码
+     * @param $userId int 用户ID
+     * @return string 授权码
+     * @throws \think\exception\DbException
+     */
+    public function generateAuth($userId)
+    {
+        $user = UserModel::get($userId);
+        $key = md5($user->username . $user->id . Config::get("salt"));
+        if ($user->auth == null) {
+            AuthModel::create([
+                "user_id" => $user->id,
+                "token_key" => $key,
+                "expire" => date("y-m-d h:i:s", strtotime("+1 week")),
+                "createAt" => date("y-m-d h:i:s")
+            ]);
+        } else {
+            $user->auth->update([
+                "token_key" => $key,
+                "expire" => date("y-m-d h:i:s", strtotime("+1 week")),
+                "createAt" => date("y-m-d h:i:s")
+            ], [
+                "user_id" => $user->id
+            ]);
+        }
+        return $key;
     }
 }
