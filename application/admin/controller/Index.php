@@ -13,5 +13,7 @@ use think\Controller;
 
 class Index extends BaseController
 {
-
+    public function test(){
+        return "test";
+    }
 }
