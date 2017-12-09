@@ -53,4 +53,22 @@ class UserModel extends Model
         return $this->hasMany("OrderModel", "user_id");
     }
 
+    /**
+     * 检查用户登录
+     * @param $username string 密码
+     * @param $password string 用户名
+     * @return null|static 用户存在|不存在返回null
+     * @throws \think\exception\DbException
+     */
+    public static function UserLogin($username, $password)
+    {
+        $user = UserModel::get(["username" => $username, "password" => $password]);
+        if ($user != null) {
+            $user->last_login = date("y-m-d h:i:s");
+            $user->save();
+        }
+
+        return $user;
+    }
+
 }
