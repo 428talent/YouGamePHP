@@ -17,7 +17,7 @@ use think\Model;
  * @package app\common\model
  * @property int id 授权ID
  * @property string token_key 授权Key
- * @property \DateTime expire 授权过期日期
+ * @property \DateTime token_expire 授权过期日期
  * @property \DateTime createAt 授权生成日期
  * @property UserModel user 授权的用户
  */
@@ -44,13 +44,13 @@ class AuthModel extends Model
             AuthModel::create([
                 "user_id" => $user->id,
                 "token_key" => $key,
-                "expire" => date("y-m-d h:i:s", strtotime("+1 week")),
+                "token_expire" => date("y-m-d h:i:s", strtotime("+1 week")),
                 "createAt" => date("y-m-d h:i:s")
             ]);
         } else {
             $user->auth->update([
                 "token_key" => $key,
-                "expire" => date("y-m-d h:i:s", strtotime("+1 week")),
+                "token_expire" => date("y-m-d h:i:s", strtotime("+1 week")),
                 "createAt" => date("y-m-d h:i:s")
             ], [
                 "user_id" => $user->id

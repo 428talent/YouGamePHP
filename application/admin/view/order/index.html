@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/datatable/amazeui.datatables.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/app.js"></script>
+
+</head>
+
+
+<body>
+{include file="../application/admin/view/common/header.html" /}
+
+<div class="am-cf admin-main">
+    {include file="../application/admin/view/common/sidebar.html" /}
+
+
+    <div class=" admin-content">
+        {include file="../application/admin/view/common/nav.html" /}
+        <div class="admin-biaogelist">
+
+            <div class="listbiaoti am-cf">
+                <ul class="am-icon-flag on"> 订单列表</ul>
+
+                <dl class="am-icon-home" style="float: right;">当前位置： 首页 > <a href="#">商品列表</a></dl>
+
+                <dl>
+                    <button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"> 补充线订单</button>
+                </dl>
+                <!--这里打开的是新页面-->
+
+
+            </div>
+
+
+            <form class="am-form am-g">
+                <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
+                    <thead>
+                    <tr>
+                        <th>Rendering engine</th>
+                        <th>Browser</th>
+                        <th>Platform(s)</th>
+                        <th>Engine version</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Rendering engine</th>
+                        <th>Browser</th>
+                        <th>Platform(s)</th>
+                        <th>Engine version</th>
+                        <th>Grade</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr class="odd gradeX">
+                        <td>Trident</td>
+                        <td>Internet
+                            Explorer 4.0
+                        </td>
+                        <td>Win 95+</td>
+                        <td class="center"> 4</td>
+                        <td class="center">X</td>
+                    </tr>
+                    <tr class="even gradeC">
+                        <td>Trident</td>
+                        <td>Internet
+                            Explorer 5.0
+                        </td>
+                        <td>Win 95+</td>
+                        <td class="center">5</td>
+                        <td class="center">C</td>
+                    </tr>
+                    <!-- more data -->
+                    </tbody>
+                </table>
+            </form>
+
+
+            <div class="foods">
+                <ul>
+                    版权所有@2015
+                </ul>
+                <dl>
+                    <a href="" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a>
+                </dl>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/static/js/polyfill/rem.min.js"></script>
+<script src="/static/js/polyfill/respond.min.js"></script>
+<script src="/static/js/amazeui.legacy.js"></script>
+<script src="/static/js/datatable/amazeui.datatables.js"
+<![endif]-->
+<script>
+    $(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+
+</body>
+</html>

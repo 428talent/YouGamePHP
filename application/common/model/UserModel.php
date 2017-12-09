@@ -53,6 +53,11 @@ class UserModel extends Model
         return $this->hasMany("OrderModel", "user_id");
     }
 
+    public function groups()
+    {
+        $this->belongsToMany("GroupModel");
+    }
+
     /**
      * 检查用户登录
      * @param $username string 密码
