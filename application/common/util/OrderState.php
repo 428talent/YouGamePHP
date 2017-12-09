@@ -16,4 +16,5 @@ class OrderState
     const payed = "已付款";
     const done = "已完成";
     const canceled = "已取消";
+    
 }
