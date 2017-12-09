@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body data-type="index">
+<!--顶部导航-->
+{include file="../application/admin/view/common/header.html" /}
+<!--顶部导航-->
+<div class="tpl-page-container tpl-page-header-fixed">
+    <!--侧边导航-->
+    {include file="../application/admin/view/common/sidebar.html" /}
+    <!--侧边导航-->
+
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">
+            Amaze UI 首页组件
+        </div>
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="#">分类</a></li>
+            <li class="am-active">内容</li>
+        </ol>
+        <div class="tpl-content-scope">
+            <div class="note note-info">
+                <h3>Amaze UI 为移动而生
+                    <span class="close" data-close="note"></span>
+                </h3>
+                <p> Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件，可快速构建界面出色、体验优秀的跨屏页面，大幅提升开发效率。</p>
+                <p><span class="label label-danger">提示:</span> Amaze UI 关注中文排版，根据用户代理调整字体，实现更好的中文排版效果。
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 权限</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="red-on">昨天</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>权限名称</th>
+                                <th>Action</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="modelList" id="permission"}
+                            <tr class="odd gradeX">
+                                <td>{$permission->id}</td>
+                                <td>{$permission->name}</td>
+                                <td>{$permission->action}</td>
+                                <td class="center">X</td>
+                            </tr>
+                            {/volist}
+                            <!-- more data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/iscroll.js"></script>
+<script src="/static/js/datatable/amazeui.datatables.js"></script>
+<script src="/static/js/app.js"></script>
+<script>
+    $('#example').DataTable({
+        "paging": true,
+        "iDisplayLength": 3,
+        "bPaginate": true, //翻页功能
+        "bLengthChange": true, //改变每页显示数据数量
+        "bFilter": true, //过滤功能
+        "bSort": true, //排序功能
+        "bInfo": true,//页脚信息
+        "bAutoWidth": true,
+        "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
+    });
+</script>
+</body>
+
+</html>

@@ -1023,7 +1023,7 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
 .tpl-table-uppercase {
     font-weight: 600;
     font-size: 13px;
-    color: #93a2a9;
+
     border: 0;
     border-bottom: none;
 }
@@ -1062,7 +1062,7 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
 .am-table>thead>tr>td,
 .am-table>thead>tr>th {
     border-top: 1px solid #F2F5F8;
-    color: #93a2a9;
+
 }
 
 .font-green {
@@ -1509,7 +1509,7 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
 .tpl-table-images-content-i-time {
     width: 100%;
     font-size: 12px;
-    color: #666;
+
     padding-bottom: 10px;
     border-bottom: 1px solid #e7ecf1;
     margin-bottom: 10px;
@@ -1564,7 +1564,6 @@ ul.tpl-dropdown-content li>a.tpl-dropdown-content-message:last-child {
 
 .tpl-table-images-content .tpl-i-font {
     font-size: 14px;
-    color: #666;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

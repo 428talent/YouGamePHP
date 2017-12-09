@@ -9,6 +9,8 @@
 namespace app\common\model;
 
 
+use app\exceptions\UserExistException;
+use think\Config;
 use think\Model;
 
 /**
@@ -27,6 +29,25 @@ use think\Model;
 class UserModel extends Model
 {
     protected $table = "user";
+
+    /**
+     * 创建用户
+     * @param $username string 用户名
+     * @param $password string 原始密码
+     * @throws UserExistException 用户已存在
+     * @throws \think\exception\DbException 数据库错误
+     */
+    public static function createUser($username, $password)
+    {
+        if (UserModel::get(["username" => $username]) != null) {
+            throw new UserExistException();
+        }
+        $password = sha1(md5(Config::get('salt') . $password));
+        self::create([
+            "username" => $username,
+            "password" => $password
+        ]);
+    }
 
     public function auth()
     {

@@ -15,6 +15,6 @@ class ExampleTest extends TestCase
 
     public function testBasicExample()
     {
-        $this->visit('/')->see('ThinkPHP');
+        $this->assertEquals(2,1+1);
     }
 }

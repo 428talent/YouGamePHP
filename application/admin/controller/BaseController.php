@@ -16,11 +16,15 @@
 namespace app\admin\controller;
 
 use think\Controller;
+use think\Model;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
+
+
     public function index()
     {
+
         return $this->fetch("index");
     }
 }
