@@ -5,7 +5,7 @@
  * Date: 17-12-9
  * Time: 上午9:35
  */
-
+namespace app\common\util;
 /**
  * Class OrderState
  * 定义用户订单状态

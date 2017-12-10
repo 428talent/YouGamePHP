@@ -11,6 +11,7 @@ namespace app\common\model;
 
 use app\exceptions\UserExistException;
 use think\Config;
+use think\Db;
 use think\Model;
 
 /**
@@ -49,6 +50,38 @@ class UserModel extends Model
         ]);
     }
 
+    /**
+     * 查询用户是否有权限
+     * @param string $action 权限名
+     * @return bool 是否拥有权限
+     */
+    public function hasPermission(string $action):bool
+    {
+        $result = Db::query("SELECT permission.*
+FROM (
+       SELECT user_group.*
+       FROM (
+              SELECT *
+              FROM user
+              WHERE user.id = 4
+            ) AS u, user_user_group, user_group
+       WHERE
+         u.id = user_user_group.user_id AND
+         user_user_group.user_group_id = user_group.id
+
+     ) AS g, user_group_permission, permission
+WHERE
+  g.id = user_group_permission.user_group_id AND
+  user_group_permission.permission_id = permission.id AND
+    permission.action =:action_name", ["action_name" => $action]);
+        return $result != null;
+    }
+
+    public function permissions()
+    {
+        return $this->hasManyThrough("PermissionModel", "GroupModel", "user_id", "permission_id", "user_group_id");
+    }
+
     public function auth()
     {
         return $this->hasOne("AuthModel", "user_id");
@@ -76,7 +109,7 @@ class UserModel extends Model
 
     public function groups()
     {
-        $this->belongsToMany("GroupModel");
+        $this->belongsToMany("GroupModel", "user_user_group", "user_group_id", "user_id");
     }
 
     /**
