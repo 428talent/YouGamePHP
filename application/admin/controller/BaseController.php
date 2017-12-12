@@ -20,7 +20,23 @@ use think\Model;
 
 abstract class BaseController extends Controller
 {
-
+    protected function _initialize()
+    {
+        parent::_initialize();
+        $this->assign("sideIndex", $this->getSideIndex());
+        $this->assign("title", $this->getTitle());
+    }
+    public function getTitle(){
+        return "YouGame";
+    }
+    /**
+     * 用于设定标签名称，管理页面侧边导航激活状态
+     * @return string 当前标签名称
+     */
+    public function getSideIndex()
+    {
+        return "Home";
+    }
 
     public function index()
     {

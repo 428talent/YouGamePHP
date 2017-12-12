@@ -15,6 +15,16 @@ use think\Model;
 
 class Group extends AdminModelController
 {
+    public function getSideIndex()
+    {
+        return "user_group";
+    }
+
+    public function getTitle()
+    {
+        return "用户组";
+    }
+
 
     /**
      * 获取Model

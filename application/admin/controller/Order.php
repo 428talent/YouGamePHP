@@ -9,7 +9,28 @@
 namespace app\admin\controller;
 
 
-class Order extends BaseController
-{
+use app\common\model\OrderModel;
+use think\Model;
 
+class Order extends AdminModelController
+{
+    public function getSideIndex()
+    {
+        return "order";
+    }
+
+    public function getTitle()
+    {
+        return "订单";
+    }
+
+
+    /**
+     * 获取Model
+     * @return Model 模型
+     */
+    public function getModel()
+    {
+        return new OrderModel();
+    }
 }

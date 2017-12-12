@@ -14,6 +14,15 @@ use think\Model;
 
 class Permission extends AdminModelController
 {
+    public function getSideIndex()
+    {
+        return "permission";
+    }
+
+    public function getTitle()
+    {
+        return "权限";
+    }
 
     /**
      * 获取Model
