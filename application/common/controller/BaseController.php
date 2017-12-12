@@ -24,6 +24,11 @@ class BaseController extends Controller
 
     }
 
+    public function index()
+    {
+        $this->fetch('index');
+    }
+
     private function initUser()
     {
         $token_cookie = Cookie::get("token");
