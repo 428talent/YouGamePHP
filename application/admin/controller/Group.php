@@ -13,7 +13,7 @@ use app\common\model\GroupModel;
 use app\common\model\UserModel;
 use think\Model;
 
-class Group extends AdminModelController
+class Group extends AdminModelAdminController
 {
     public function getSideIndex()
     {

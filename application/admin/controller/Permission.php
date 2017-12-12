@@ -12,7 +12,7 @@ namespace app\admin\controller;
 use app\common\model\PermissionModel;
 use think\Model;
 
-class Permission extends AdminModelController
+class Permission extends AdminModelAdminController
 {
     public function getSideIndex()
     {

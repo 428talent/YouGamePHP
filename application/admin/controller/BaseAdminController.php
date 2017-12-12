@@ -11,14 +11,14 @@
  * Class BaseController
  * @package app\admin\controller
  * Admin 基类，用于定义通用方法.
+ * 所有的Admin页面控制器必须继承此方法
  */
 
 namespace app\admin\controller;
 
-use think\Controller;
-use think\Model;
+use app\common\controller\BaseController;
 
-abstract class BaseController extends Controller
+abstract class BaseAdminController extends BaseController
 {
     protected function _initialize()
     {

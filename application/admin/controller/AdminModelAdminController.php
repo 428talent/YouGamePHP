@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 use think\Model;
 
-abstract class AdminModelController extends BaseController
+abstract class AdminModelAdminController extends BaseAdminController
 {
     /**
      * 获取Model

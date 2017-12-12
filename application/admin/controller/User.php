@@ -12,7 +12,7 @@ namespace app\admin\controller;
 use app\common\model\UserModel;
 use think\Model;
 
-class User extends AdminModelController
+class User extends AdminModelAdminController
 {
 
     /**

@@ -12,7 +12,7 @@ namespace app\admin\controller;
 use app\common\model\OrderModel;
 use think\Model;
 
-class Order extends AdminModelController
+class Order extends AdminModelAdminController
 {
     public function getSideIndex()
     {

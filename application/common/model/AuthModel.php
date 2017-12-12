@@ -36,7 +36,7 @@ class AuthModel extends Model
      * @return string 授权码
      * @throws \think\exception\DbException
      */
-    public function generateAuth($userId)
+    public static function generateAuth($userId)
     {
         $user = UserModel::get($userId);
         $key = md5($user->username . $user->id . Config::get("salt"));

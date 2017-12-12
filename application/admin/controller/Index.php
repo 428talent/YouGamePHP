@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Index extends BaseController
+class Index extends BaseAdminController
 {
     public function test(){
         return "test";

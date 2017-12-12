@@ -55,7 +55,7 @@ class UserModel extends Model
      * @param string $action 权限名
      * @return bool 是否拥有权限
      */
-    public function hasPermission(string $action):bool
+    public function hasPermission(string $action): bool
     {
         $result = Db::query("SELECT permission.*
 FROM (
@@ -75,6 +75,12 @@ WHERE
   user_group_permission.permission_id = permission.id AND
     permission.action =:action_name", ["action_name" => $action]);
         return $result != null;
+    }
+
+    public function checkPassword(string $password)
+    {
+        $encryptPassword = sha1(md5(Config::get('salt') . $password));
+        return $this->password == $encryptPassword;
     }
 
     public function permissions()
@@ -126,7 +132,6 @@ WHERE
             $user->last_login = date("y-m-d h:i:s");
             $user->save();
         }
-
         return $user;
     }
 
