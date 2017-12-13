@@ -11,7 +11,7 @@ namespace app\admin\controller;
 
 use think\Model;
 
-abstract class AdminModelAdminController extends BaseAdminController
+abstract class AdminModelController extends BaseAdminController
 {
     /**
      * 获取Model
@@ -23,4 +23,6 @@ abstract class AdminModelAdminController extends BaseAdminController
         $this->assign("modelList", $this->getModel()->select());
         return parent::index();
     }
+
+
 }
