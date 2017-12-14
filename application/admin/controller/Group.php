@@ -25,6 +25,19 @@ class Group extends AdminModelController
         return "用户组";
     }
 
+    public function create()
+    {
+        $result = $this->validate($this->request->post(), [
+            "name" => "require"
+        ]);
+        if (true !== $result) {
+            $this->error($result);
+        }
+        GroupModel::create([
+            "group_name" => $this->request->post("name")
+        ]);
+        $this->redirect('/admin/group');
+    }
 
     /**
      * 获取Model
