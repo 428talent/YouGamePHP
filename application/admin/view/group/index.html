@@ -47,7 +47,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
+                                <li class="red-on" onclick="showAddDialog()">添加</li>
                                 <li class="green">前天</li>
                                 <li class="blue">本周</li>
                             </ul>
@@ -81,7 +81,21 @@
     </div>
 
 </div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Amaze UI</div>
+        <div class="am-modal-bd">
+            <form action="/admin/group/create" id="create-group-form" method="post">
+                <input type="text" name="name" class="am-modal-prompt-input">
+            </form>
 
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
 
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
@@ -100,6 +114,17 @@
         "bAutoWidth": true,
         "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
     });
+    const showAddDialog = () => {
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: (e) => {
+                $('#create-group-form').submit()
+            },
+            onCancel: (e) => {
+
+            }
+        });
+    }
 </script>
 </body>
 
