@@ -27,7 +27,7 @@ class AuthModel extends Model
 
     public function user()
     {
-        $this->belongsTo("UserModel", "user_id");
+        return $this->belongsTo("UserModel", "user_id");
     }
 
     /**

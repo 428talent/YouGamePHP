@@ -21,11 +21,11 @@ abstract class AdminModelController extends BaseAdminController
     /**
      * @var string[] 保存时获取的字段
      */
-    private $saveField;
+    protected $saveField;
     /**
      * @var string 操作成功时重定向位置
      */
-    private $actionRedirect;
+    protected $actionRedirect;
 
     /**
      * 获取Model

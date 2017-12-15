@@ -15,6 +15,7 @@ use think\Model;
 
 class Group extends AdminModelController
 {
+
     public function getSideIndex()
     {
         return "user_group";
@@ -33,9 +34,11 @@ class Group extends AdminModelController
         if (true !== $result) {
             $this->error($result);
         }
+
         GroupModel::create([
             "group_name" => $this->request->post("name")
         ]);
+
         $this->redirect('/admin/group');
     }
 
@@ -47,6 +50,7 @@ class Group extends AdminModelController
     {
         return new GroupModel();
     }
+
 
     public function edit()
     {

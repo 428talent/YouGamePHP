@@ -4,3 +4,4 @@ composer.lock
 .travis.yml
 LICENSE.txt
 
+public/static/imgs/
