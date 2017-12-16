@@ -38,4 +38,5 @@ class Goods extends AdminModelController
     {
         return $this->fetch("create");
     }
+
 }

@@ -23,23 +23,23 @@
 
 <body>
 
-    {include file="../application/common/view/shop/header.html" /}
-    <!--悬浮搜索框-->
+{include file="../application/common/view/shop/header.html" /}
+<!--悬浮搜索框-->
 
-    <div class="nav white">
-        <div class="logo"><img src="/static/front/images/logo.png"/></div>
-        <div class="logoBig">
-            <li></li>
-        </div>
-
-        <div class="search-bar pr">
-            <a name="index_none_header_sysc" href="#"></a>
-            <form>
-                <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
-                <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
-            </form>
-        </div>
+<div class="nav white">
+    <div class="logo"><img src="/static/front/images/logo.png"/></div>
+    <div class="logoBig">
+        <li></li>
     </div>
+
+    <div class="search-bar pr">
+        <a name="index_none_header_sysc" href="#"></a>
+        <form>
+            <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+            <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+        </form>
+    </div>
+</div>
 
 
 </div>
@@ -125,142 +125,93 @@
         <div class="am-g am-g-fixed recommendation">
             <div class="clock am-u-sm-3">
 
-            <p>今日<br>推荐</p>
-        </div>
-        {volist name="gameList" id="game"}
-        <div class="am-u-sm-4 am-u-lg-3 ">
-            <div class="info ">
-                <h3>{$game->name}</h3>
-                <h4>{$game->publisher}</h4>
+                <p>今日<br>推荐</p>
             </div>
-            <div class="recommendationMain one">
-                <a href="../../../../public/static/index/introduction.html">
-                    <div style="overflow: hidden;width: 150px;height: 150px;">
-                    <img src="http://127.0.0.1:9601{$game->icon}" alt=""  style="width: 200px" >
-                    </div>
-                </a>
-            </div>
-        </div>
-        {/volist}
-    </div>
-    <div class="clear "></div>
-    <!--特别优惠 -->
-
-    <div class="am-container activity ">
-        <div class="shopTitle ">
-            <h4>特别优惠</h4>
-            <h3>每期活动 优惠享不停 </h3>
-            <span class="more ">
-                              <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
-                        </span>
-        </div>
-        <div class="am-g am-g-fixed ">
-            {volist name="gameList" id="game"}
-            <div class="am-u-sm-3 ">
-
-                <div class="activityMain ">
-                    <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+            {volist name="tuijian" id="game"}
+            <div class="am-u-sm-4 am-u-lg-3 ">
+                <div class="info ">
+                    <h3>{$game->name}</h3>
+                    <h4>{$game->publisher}</h4>
                 </div>
-
+                <div class="recommendationMain one">
+                    <a href="../../../../public/static/index/introduction.html">
+                        <div style="overflow: hidden;width: 150px;height: 150px;">
+                            <img src="http://127.0.0.1:9601{$game->icon}" alt="" style="width: 200px">
+                        </div>
+                    </a>
+                </div>
             </div>
             {/volist}
         </div>
-    </div>
-    <div class="clear "></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+        <div class="clear "></div>
+        <!--特别优惠 -->
 
-    <!--特别优惠 -->
-
-    <div class="am-container activity ">
-        <div class="shopTitle ">
-
-            <h4>更新与优惠</h4>
-            <span class="more ">
+        <div class="am-container activity ">
+            <div class="shopTitle ">
+                <h4>特别优惠</h4>
+                <h3>每期活动 优惠享不停 </h3>
+                <span class="more ">
                               <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
                         </span>
+            </div>
+            <div class="am-g am-g-fixed ">
+                {volist name="gameList" id="game"}
+                <div class="am-u-sm-3 ">
+
+                    <div class="activityMain ">
+                        <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+                    </div>
+
+                </div>
+                {/volist}
+            </div>
         </div>
-        <div class="am-g am-g-fixed ">
-            <div class="am-u-sm-3 ">
+        <div class="clear "></div>
 
+        <!--特别优惠 -->
 
-                <div class="activityMain ">
-                    <img src="/static/front/images/"></img>
-                </div>
+        <div class="am-container activity ">
+            <div class="shopTitle ">
 
+                <h4>更新与优惠</h4>
+                <span class="more ">
+                              <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+                        </span>
             </div>
+            <div class="am-g am-g-fixed ">
+                {volist name="gameList" id="game"}
+                <div class="am-u-sm-3 ">
+                    <div class="activityMain ">
+                        <img src="{$game->icon}" alt="">
+                    </div>
 
-            <div class="am-u-sm-3 ">
-
-                <div class="activityMain ">
-                    <img src="/static/front/images/"></img>
                 </div>
-
+                {/volist}
             </div>
-
-            <div class="am-u-sm-3 ">
-
-                <div class="activityMain ">
-                    <img src="/static/front/images/ "></img>
-                </div>
-
-            </div>
-
-            <div class="am-u-sm-3 last ">
-
-                <div class="activityMain ">
-                    <img src="/static/front/images/"></img>
-                </div>
-
-            </div>
-
         </div>
-    </div>
-    <div class="clear "></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+        <div class="clear "></div>
+        <div class="dibu" align="center">
+            <p>正在寻找推荐？<br>
 
+                <a href="/index/index/login">请登录</a>
 
-    <div class="dibu" align="center">
-        <p>正在寻找推荐？<br>
-            <br>
-            <br>
-
-            <a href="/index/index/login">请登录</a>
-            <br>
-            <br>
-            <br>
-            或者<a href="/index/index/register">注册</a>免费加入YouGame
-        </p>
-    </div>
-
-
-    <div class="footer ">
-
-        <div class="footer-bd ">
-            <p>
-
-                <em>©2017 Valve Corporation。保留所有权利。所有商标均为其在美国及其它国家/地区的各自持有者所有。
-                    所有的价格均已包含增值税（如适用）</em>
+                或者<a href="/index/index/register">注册</a>免费加入YouGame
             </p>
         </div>
-    </div>
 
-</div>
+
+        <div class="footer ">
+
+            <div class="footer-bd ">
+                <p>
+
+                    <em>©2017 Valve Corporation。保留所有权利。所有商标均为其在美国及其它国家/地区的各自持有者所有。
+                        所有的价格均已包含增值税（如适用）</em>
+                </p>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script>

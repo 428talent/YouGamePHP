@@ -139,9 +139,7 @@ body, button, input, select, textarea {
 .td-op a {position: static;width: 100%;} 
 .td-op .btn-fav{display: block;} 
 .item-content .td .item-props-can{position: relative;}
-.item-content .td .item-props-can:hover,.item-content .td .item-props-can.selected{border-color:#F60;background: #FFF none repeat scroll 0% 0%;}
-.item-props.item-props-can:hover .btn-edit-sku ,.item-props.item-props-can .btn-edit-sku.selected {display: block;position: absolute;right: -1px;top:-1px;color: #FFF;cursor: pointer;background: #F60 none repeat scroll 0% 0%;padding: 2px 4px 0px;width: auto;height: 16px;line-height: 1;}	 	
-   	
+
    }
 
 

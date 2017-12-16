@@ -12,6 +12,7 @@ class Index extends BaseController
     {
         $gameList = GameModel::all();
         $this->assign("gameList", $gameList);
+        $this->assign("tuijian", array_slice($gameList,0,3));
         return $this->fetch('index');
 
     }
