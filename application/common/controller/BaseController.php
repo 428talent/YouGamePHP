@@ -10,11 +10,16 @@ namespace app\common\controller;
 
 
 use app\common\model\AuthModel;
+use app\common\model\UserModel;
 use think\Controller;
 use think\Cookie;
+use think\Model;
 
 class BaseController extends Controller
 {
+    /**
+     * @var UserModel 请求用户
+     */
     protected $user = null;
 
     protected function _initialize()
@@ -22,15 +27,17 @@ class BaseController extends Controller
         parent::_initialize();
         $this->initUser();
 
+
     }
 
     public function index()
     {
-        $this->fetch('index');
+        return $this->fetch('index');
     }
 
     private function initUser()
     {
+        $this->assign("isLogin", false);
         $token_cookie = Cookie::get("token");
         if ($token_cookie == null) {
             return;
@@ -45,6 +52,7 @@ class BaseController extends Controller
 //        }
         $this->user = $auth->user;
         $this->assign("user", $this->user);
+        $this->assign("isLogin", true);
     }
 
     protected function validatePostData(array $rule)

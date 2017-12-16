@@ -14,11 +14,19 @@ use think\Controller;
 
 class BaseUserController extends BaseController
 {
+    protected $sideNavIndex = 'home';
+
     protected function _initialize()
     {
         parent::_initialize();
         if ($this->user == null) {
             $this->redirect("/login");
         }
+        $this->assign("sideNavIndex", $this->sideNavIndex);
+    }
+
+    protected function checkOwn()
+    {
+
     }
 }

@@ -2,10 +2,11 @@
 
 namespace app\index\controller;
 
+use app\common\controller\BaseController;
 use app\common\model\GameModel;
 use think\Controller;
 
-class Index extends Controller
+class Index extends BaseController
 {
     public function index()
     {
