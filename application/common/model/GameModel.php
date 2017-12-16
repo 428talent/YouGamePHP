@@ -19,6 +19,7 @@ use think\Model;
  * @property string detail 游戏具体介绍
  * @property bool enable 游戏是否可用
  * @property string icon 游戏图标
+ * @property float price 价格
  * @property \DateTime relese_time 游戏发行时间
  * @property string publisher 发行商
  * @property \DateTime createAt 创建时间

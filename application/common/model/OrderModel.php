@@ -18,6 +18,7 @@ use think\Model;
  * @property int state 订单状态
  * @property GameModel game 游戏
  * @property UserModel user 用户
+ * @property float price 应付价格
  * @property  \DateTime createAt 创建时间
  * @property  \DateTime updateAt 更新时间
  * @property OrderLogModel log 订单交易记录
