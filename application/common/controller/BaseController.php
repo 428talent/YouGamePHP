@@ -35,15 +35,23 @@ class BaseController extends Controller
         if ($token_cookie == null) {
             return;
         }
-        $token = md5($token_cookie);
-        $auth = AuthModel::get(["token_key" => $token]);
+        $auth = AuthModel::get(["token_key" => $token_cookie]);
         if ($auth == null) {
             return;
         }
-        $now_time = new \DateTime();
-        if ($auth->token_expire->getTimestamp() < $now_time->getTimestamp()) {
-            return;
-        }
+//        $now_time = new \DateTime();
+//        if ($auth->token_expire->getTimestamp() < $now_time->getTimestamp()) {
+//            return;
+//        }
         $this->user = $auth->user;
+        $this->assign("user", $this->user);
+    }
+
+    protected function validatePostData(array $rule)
+    {
+        $result = $this->validate($this->request->post(), $rule);
+        if (true !== $result) {
+            $this->error($result);
+        }
     }
 }

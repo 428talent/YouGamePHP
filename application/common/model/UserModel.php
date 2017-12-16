@@ -50,6 +50,11 @@ class UserModel extends Model
         ]);
     }
 
+    public function profile()
+    {
+        return $this->hasOne("ProfileModel","user_id");
+    }
+
     /**
      * 查询用户是否有权限
      * @param string $action 权限名
@@ -127,7 +132,8 @@ WHERE
      */
     public static function UserLogin($username, $password)
     {
-        $user = UserModel::get(["username" => $username, "password" => $password]);
+        $enPassword = sha1(md5(Config::get('salt') . $password));
+        $user = UserModel::get(["username" => $username, "password" => $enPassword]);
         if ($user != null) {
             $user->last_login = date("y-m-d h:i:s");
             $user->save();

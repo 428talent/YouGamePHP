@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>首页</title>
+
+    <link href="/static/front/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/front/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/front/basic/css/demo.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/front/css/hmstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/front/css/skin.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/front/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+    <script src="/static/front/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+
+</head>
+
+<body>
+<div class="hmtop">
+    <!--顶部导航条 -->
+    <div class="am-container header">
+        <ul class="message-l">
+            <div class="topMessage">
+                <div class="menu-hd">
+                    <a href="/index/index/login" target="_top" class="h">登录账户</a>
+                    <a href="/index/index/register" target="_top">注册账户</a>
+                </div>
+            </div>
+        </ul>
+        <ul class="message-r">
+            <div class="topMessage home">
+                <div class="menu-hd"><a href="/index/index/index" target="_top" class="h">商城首页</a></div>
+            </div>
+            <div class="topMessage my-shangcheng">
+                <div class="menu-hd MyShangcheng"><a href="/index/index/person/index" target="_top"><i
+                        class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+            </div>
+            <div class="topMessage mini-cart">
+                <div class="menu-hd"><a id="mc-menu-hd" href="/index/index/shopcart" target="_top"><i
+                        class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum"
+                                                                                              class="h">0</strong></a>
+                </div>
+            </div>
+            <div class="topMessage favorite">
+                <div class="menu-hd"><a href="#" target="_top"><i class="am-icon-heart am-icon-fw"></i><span>收藏夹</span></a>
+                </div>
+        </ul>
+    </div>
+
+    <!--悬浮搜索框-->
+
+    <div class="nav white">
+        <div class="logo"><img src="/static/front/images/logo.png"/></div>
+        <div class="logoBig">
+            <li></li>
+        </div>
+
+        <div class="search-bar pr">
+            <a name="index_none_header_sysc" href="#"></a>
+            <form>
+                <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+                <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<div class="banner">
+    <!--轮播 -->
+    <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
+        <ul class="am-slides">
+            {volist name="gameList" id="game"}
+            <li class="banner1">
+                <a href="../../../../public/static/index/introduction.html">
+                    <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="shopNav">
+    <div class="slideall">
+
+        <div class="long-title"><span class="all-goods">YouGame游戏商城</span></div>
+        <div class="nav-cont">
+            <ul>
+                <li class="index"><a href="/index/index/index">首页</a></li>
+                <li class="qc"><a href="#">游戏</a></li>
+                <li class="qc"><a href="#">软件</a></li>
+                <li class="qc"><a href="#">视频</a></li>
+                <li class="qc last"><a href="#">硬件</a></li>
+            </ul>
+
+        </div>
+
+
+        <!--轮播-->
+
+        <script type="text/javascript">
+            (function () {
+                $('.am-slider').flexslider();
+            });
+            $(document).ready(function () {
+                $("li").hover(function () {
+                    $(".category-content .category-list li.first .menu-in").css("display", "none");
+                    $(".category-content .category-list li.first").removeClass("hover");
+                    $(this).addClass("hover");
+                    $(this).children("div.menu-in").css("display", "block")
+                }, function () {
+                    $(this).removeClass("hover")
+                    $(this).children("div.menu-in").css("display", "none")
+                });
+            })
+        </script>
+
+
+        <!--走马灯 -->
+
+
+        <div class="clear"></div>
+    </div>
+    <script type="text/javascript">
+        if ($(window).width() < 640) {
+            function autoScroll(obj) {
+                $(obj).find("ul").animate({
+                    marginTop: "-39px"
+                }, 500, function () {
+                    $(this).css({
+                        marginTop: "0px"
+                    }).find("li:first").appendTo(this);
+                })
+            }
+
+            $(function () {
+                setInterval('autoScroll(".demo")', 3000);
+            })
+        }
+    </script>
+</div>
+<div class="shopMainbg">
+    <div class="shopMain" id="shopmain">
+
+        <!--今日推荐 -->
+
+        <div class="am-g am-g-fixed recommendation">
+            <div class="clock am-u-sm-3">
+
+            <p>今日<br>推荐</p>
+        </div>
+        {volist name="gameList" id="game"}
+        <div class="am-u-sm-4 am-u-lg-3 ">
+            <div class="info ">
+                <h3>{$game->name}</h3>
+                <h4>{$game->publisher}</h4>
+            </div>
+            <div class="recommendationMain one">
+                <a href="../../../../public/static/index/introduction.html">
+                    <div style="overflow: hidden;width: 150px;height: 150px;">
+                    <img src="http://127.0.0.1:9601{$game->icon}" alt=""  style="width: 200px" >
+                    </div>
+                </a>
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div class="clear "></div>
+    <!--特别优惠 -->
+
+    <div class="am-container activity ">
+        <div class="shopTitle ">
+            <h4>特别优惠</h4>
+            <h3>每期活动 优惠享不停 </h3>
+            <span class="more ">
+                              <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+                        </span>
+        </div>
+        <div class="am-g am-g-fixed ">
+            {volist name="gameList" id="game"}
+            <div class="am-u-sm-3 ">
+
+                <div class="activityMain ">
+                    <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+                </div>
+
+            </div>
+            {/volist}
+        </div>
+    </div>
+    <div class="clear "></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--特别优惠 -->
+
+    <div class="am-container activity ">
+        <div class="shopTitle ">
+
+            <h4>更新与优惠</h4>
+            <span class="more ">
+                              <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+                        </span>
+        </div>
+        <div class="am-g am-g-fixed ">
+            <div class="am-u-sm-3 ">
+
+
+                <div class="activityMain ">
+                    <img src="/static/front/images/"></img>
+                </div>
+
+            </div>
+
+            <div class="am-u-sm-3 ">
+
+                <div class="activityMain ">
+                    <img src="/static/front/images/"></img>
+                </div>
+
+            </div>
+
+            <div class="am-u-sm-3 ">
+
+                <div class="activityMain ">
+                    <img src="/static/front/images/ "></img>
+                </div>
+
+            </div>
+
+            <div class="am-u-sm-3 last ">
+
+                <div class="activityMain ">
+                    <img src="/static/front/images/"></img>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="clear "></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="dibu" align="center">
+        <p>正在寻找推荐？<br>
+            <br>
+            <br>
+
+            <a href="/index/index/login">请登录</a>
+            <br>
+            <br>
+            <br>
+            或者<a href="/index/index/register">注册</a>免费加入YouGame
+        </p>
+    </div>
+
+
+    <div class="footer ">
+
+        <div class="footer-bd ">
+            <p>
+
+                <em>©2017 Valve Corporation。保留所有权利。所有商标均为其在美国及其它国家/地区的各自持有者所有。
+                    所有的价格均已包含增值税（如适用）</em>
+            </p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    window.jQuery || document.write('<script src="basic/js/jquery.min.js "><\/script>');
+</script>
+<script type="text/javascript " src="/static/front/basic/js/quick_links.js "></script>
+</body>
+
+</html>
