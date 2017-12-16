@@ -123,7 +123,7 @@ width: 62px;line-height:24px;font-size: 12px;display: block;}
 /*介绍*/
 .introduce{width:100%;margin: 0px auto;text-align: center;padding-bottom: 110px;max-width:1200px ;}
 .introduceMain{width:100%;background:#fff ;}
-.browse{display: none;}
+
 
 /*产品参数*/
 
@@ -328,7 +328,7 @@ div.zoomMask { position:absolute; background:url(../images/mask.png)repeat scrol
 .browse li img{width:100% ;}
 .browse li .p-price strong {color: #E4393C;font-weight: 600;}
 /*导航固定*/
-ul.am-tabs-nav.am-nav.am-nav-tabs {left:20% ;max-width:960px ;background: #F5F5F5;right: 40px;}
+ul.am-tabs-nav.am-nav.am-nav-tabs {left:20% ;background: #F5F5F5;right: 40px;}
 .am-nav-tabs > li.am-active {border-top: 2px solid #F03726;border-bottom: none;}
 
 /*评论*/
@@ -348,7 +348,7 @@ ul.am-tabs-nav.am-nav.am-nav-tabs {left:20% ;max-width:960px ;background: #F5F5F
 .clearfixRight {width: 700px;}
 
 /*导航固定*/
-ul.am-tabs-nav.am-nav.am-nav-tabs {left:auto;right:auto;width:960px ;}
+ul.am-tabs-nav.am-nav.am-nav-tabs {left:auto;right:auto;width:100% ;}
 
 
 }

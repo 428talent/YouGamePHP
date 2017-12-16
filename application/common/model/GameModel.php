@@ -30,6 +30,14 @@ use think\Model;
 class GameModel extends Model
 {
     protected $table = "game";
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = "createAt";
+    protected $updateTime = "updateAt";
+
+    protected static function init()
+    {
+        parent::init();
+    }
 
     public function comments()
     {
@@ -40,4 +48,5 @@ class GameModel extends Model
     {
         return $this->hasMany("GamePicModel", "game_id");
     }
+
 }

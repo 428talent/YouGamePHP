@@ -21,7 +21,7 @@ use think\Model;
  */
 class GameCategory extends Model
 {
-    protected $table="category";
+    protected $table="game_category";
     public function games()
     {
         return $this->hasMany("GameModel", "category_id");

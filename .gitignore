@@ -5,3 +5,4 @@ composer.lock
 LICENSE.txt
 
 public/static/imgs/
+public/imgs/

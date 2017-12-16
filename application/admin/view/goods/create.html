@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div>
-                        <form class="am-form am-form-horizontal">
+                        <form class="am-form am-form-horizontal" action="/admin/goods/save" method="post" enctype="multipart/form-data">
                             <div class="am-form-group">
                                 <label for="game-name" class="am-u-sm-3 am-form-label">游戏名</label>
                                 <div class="am-u-sm-9">
@@ -67,15 +67,32 @@
                             <div class="am-form-group">
                                 <label for="relese-time" class="am-u-sm-3 am-form-label">游戏发行时间</label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" value="2017-12-13" id="relese-time" class="am-form-field">
-                                    <small>邮箱你懂得...</small>
+                                    <input type="text" value="2017-12-13" id="relese-time" name="relese_time"
+                                           class="am-form-field">
+                                    <small></small>
                                 </div>
                             </div>
 
                             <div class="am-form-group">
                                 <label for="publisher" class="am-u-sm-3 am-form-label">发行商</label>
                                 <div class="am-u-sm-9">
-                                    <input type="text" id="publisher" placeholder="输入你的电话号码 / Telephone">
+                                    <input type="text" id="publisher" name="publisher" placeholder="">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="price" class="am-u-sm-3 am-form-label">价格</label>
+                                <div class="am-u-sm-9">
+                                    <input type="number" id="price" name="price">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label for="price" class="am-u-sm-3 am-form-label">分类</label>
+                                <div class="am-u-sm-9">
+                                    <select data-am-selected name="category">
+                                        {volist name="category" id="item"}
+                                        <option value="{$item->id}">{$item->name}</option>
+                                        {/volist}
+                                    </select>
                                 </div>
                             </div>
                             <div class="am-form-group">
@@ -90,10 +107,11 @@
                                 </div>
                             </div>
                             <div class="am-form-group">
-                                <label for="detail" class="am-u-sm-3 am-form-label">简介 / Intro</label>
+                                <label for="detail" class="am-u-sm-3 am-form-label">简介</label>
                                 <div class="am-u-sm-9">
-                                    <textarea class="" rows="5" id="detail" placeholder="输入个人简介"></textarea>
-                                    <small>250字以内写出你的一生...</small>
+                                    <textarea class="" rows="5" id="detail" name="detail"
+                                              placeholder="输入个人简介"></textarea>
+                                    <small></small>
                                 </div>
                             </div>
 
