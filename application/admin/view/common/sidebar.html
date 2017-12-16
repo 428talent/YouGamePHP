@@ -58,11 +58,33 @@
                 </ul>
             </li>
             <li class="tpl-left-nav-item">
-                <a href="/admin/order" class="nav-link {eq name="sideIndex" value="order"}active{/eq}">
-                    <i class="am-icon-home"></i>
-                    <span>订单</span>
+                <a href="#" class="nav-link {eq name="sideIndex" value="order"}active{/eq}">
+                <i class="am-icon-home"></i>
+                <span>订单</span>
                 </a>
             </li>
+            <li class="tpl-left-nav-item">
+                <a href="#" class="nav-link tpl-left-nav-link-list">
+                    <i class="am-icon-wpforms"></i>
+                    <span>财务管理</span>
+                    <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                </a>
+                <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                    <li>
+                        <a href="/admin/permission" class="{eq name="sideIndex" value="permission"}active{/eq}">
+                        <i class="am-icon-angle-right"></i>
+                        <span>充值记录</span>
+                        <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                        </a>
+
+                        <a href="/admin/group" class="{eq name="sideIndex" value="user_group"}active{/eq}">
+                        <i class="am-icon-angle-right"></i>
+                        <span>交易记录</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="tpl-left-nav-item">
                 <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
                     <i class="am-icon-wpforms"></i>
