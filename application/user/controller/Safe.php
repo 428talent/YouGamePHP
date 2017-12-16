@@ -14,6 +14,7 @@ use think\Config;
 
 class Safe extends BaseUserController
 {
+    protected $sideNavIndex = "safe";
     public function index()
     {
         return $this->fetch("index");

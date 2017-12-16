@@ -7,13 +7,13 @@
             <a href="#">个人资料</a>
             <ul>
                 <li class=" {eq name="sideNavIndex" value="profile"}active{/eq}"> <a href="/user/personinfo">个人信息</a></li>
-                <li> <a href="/user/safe">安全设置</a></li>
+                <li class="{eq name="sideNavIndex" value="safe"}active{/eq}"> <a href="/user/safe">安全设置</a></li>
             </ul>
         </li>
         <li class="person">
             <a href="#">我的交易</a>
             <ul>
-                <li><a href="order.html">订单管理</a></li>
+                <li class="{eq name="sideNavIndex" value="order"}active{/eq}"><a href="/user/order">订单管理</a></li>
                 <li> <a href="change.html">退款售后</a></li>
             </ul>
         </li>

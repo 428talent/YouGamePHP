@@ -13,7 +13,7 @@ use app\common\model\OrderModel;
 
 class Order extends BaseUserController
 {
-
+    protected $sideNavIndex = "order";
     public function index()
     {
         $orderList = OrderModel::all();
