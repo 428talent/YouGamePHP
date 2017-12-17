@@ -95,7 +95,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on" >删除</li>
+                                <li class="red-on">删除</li>
                                 <li class="green">前天</li>
                                 <li class="blue">本周</li>
                             </ul>
@@ -135,6 +135,55 @@
                             </li>
                             {/volist}
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span>评论</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="green-on" onclick="addPicButtonHandle()">+添加</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="am-table am-table-striped am-table-bordered am-table-compact" id="comments-table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>评论者</th>
+                                <th>内容</th>
+                                <th>赞成</th>
+                                <th>反对</th>
+                                <th>创建于</th>
+                                <th>修改于</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="game:comments" id="comment"}
+                            <tr class="odd gradeX">
+                                <td>{$comment->id}</td>
+                                <td>{$comment->user->username}</a></td>
+                                <td>{$comment->content}</a></td>
+                                <td>{$comment->positive}</a></td>
+                                <td>{$comment->negative}</a></td>
+                                <td class="center">{$comment->createAt}</td>
+                                <td class="center">{$comment->updateAt}</td>
+                            </tr>
+                            {/volist}
+                            <!-- more data -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -193,7 +242,7 @@
             }
         });
     };
-    const onDeleteGoodsHandle = (id)=>{
+    const onDeleteGoodsHandle = (id) => {
         $('#delete-game-prompt').modal({
             relatedTarget: this,
             onConfirm: (e) => {
@@ -204,6 +253,17 @@
             }
         });
     }
+    $('#comments-table').DataTable({
+        "paging": true,
+        "iDisplayLength": 10,
+        "bPaginate": true, //翻页功能
+        "bLengthChange": true, //改变每页显示数据数量
+        "bFilter": true, //过滤功能
+        "bSort": true, //排序功能
+        "bInfo": true,//页脚信息
+        "bAutoWidth": true,
+        "lengthMenu": [[10, 15, 20, -1], [10, 15, 20, "All"]]
+    });
 </script>
 </body>
 
