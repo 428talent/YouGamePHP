@@ -43,7 +43,7 @@
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 用户组</span>
+                            <span> 游戏信息</span>
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
@@ -130,7 +130,7 @@
                             <li>
                                 <div style="background: #eee">
                                     <img class="am-thumbnail" src="{$pic->url}" style="width: 300px"/>
-                                    <a>删除</a>
+                                    <a href="/admin/goods/deletepic?pid={$pic->id}&gid={$game->id}">删除</a>
                                 </div>
                             </li>
                             {/volist}

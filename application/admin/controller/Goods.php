@@ -13,6 +13,7 @@ use app\common\model\GameCategory;
 use app\common\model\GameModel;
 use app\common\model\GamePicModel;
 use DateTime;
+use think\File;
 use think\Model;
 
 /**
@@ -101,6 +102,16 @@ class Goods extends AdminModelController
                     "game_id" => $gid
                 ]);
             }
+        }
+        $this->redirect("/admin/goods/detail/" . $gid);
+    }
+
+    public function deletepic()
+    {
+        $gid = $this->request->param("gid");
+        $pid = $this->request->param("pid");
+        if (unlink(substr(GamePicModel::get($pid)->url, 1))) {
+            GamePicModel::destroy($pid);
         }
         $this->redirect("/admin/goods/detail/" . $gid);
     }
