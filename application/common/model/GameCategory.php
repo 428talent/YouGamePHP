@@ -21,6 +21,10 @@ use think\Model;
  */
 class GameCategory extends Model
 {
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = "createAt";
+    protected $updateTime = "updateAt";
+    protected $readonly = ['createAt', 'updateAt'];
     protected $table="game_category";
     public function games()
     {

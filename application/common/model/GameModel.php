@@ -33,7 +33,8 @@ class GameModel extends Model
     protected $autoWriteTimestamp = 'datetime';
     protected $createTime = "createAt";
     protected $updateTime = "updateAt";
-    protected $readonly = ['createAt','updateAt'];
+    protected $readonly = ['createAt', 'updateAt'];
+
     protected static function init()
     {
         parent::init();
@@ -48,8 +49,12 @@ class GameModel extends Model
     {
         return $this->hasMany("GamePicModel", "game_id");
     }
-    public function category(){
-        return $this->belongsTo("GameCategory","category_id");
+
+    public function category()
+    {
+        return $this->belongsTo("GameCategory", "category_id");
     }
+
+
 
 }

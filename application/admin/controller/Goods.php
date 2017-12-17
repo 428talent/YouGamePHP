@@ -26,7 +26,7 @@ class Goods extends AdminModelController
 {
     public function getSideIndex()
     {
-        return "goods";
+        return "game";
     }
 
     /**
@@ -114,6 +114,55 @@ class Goods extends AdminModelController
             GamePicModel::destroy($pid);
         }
         $this->redirect("/admin/goods/detail/" . $gid);
+    }
+
+    public function delete()
+    {
+        $id = $this->request->param("id");
+        GameModel::destroy($id);
+        $this->redirect("/admin/goods");
+    }
+
+    public function edit()
+    {
+        $id = $this->request->param("id");
+        $this->assign("game", GameModel::get($id));
+        $this->assign("category", GameCategory::all());
+        return $this->fetch("edit");
+    }
+
+    public function modify()
+    {
+        $this->validatePostData([
+            "id" => "require",
+            "name" => "require",
+            "relese_time" => "require",
+            "publisher" => "require",
+            "price" => "require",
+            "category" => "require",
+            "detail" => "require"
+        ]);
+        $game = GameModel::get($this->request->post("id"));
+        $game->save([
+            "name" => $this->request->post("name"),
+            "relese_time" => $this->request->post("relese_time") . " 00:00:00",
+            "publisher" => $this->request->post("publisher"),
+            "price" => $this->request->post("price"),
+            "category_id" => $this->request->post("category"),
+            "detail" => $this->request->post("detail")
+        ], ["id" => $this->request->post("id")]);
+
+        $file = request()->file('icon');
+        if ($file) {
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'imgs' . DS . 'game' . DS . $game->id, "cover");
+            if ($info) {
+
+                $game->icon = "/imgs/game/" . $game->id . "/" . $info->getFilename();
+                $game->save();
+            }
+        }
+        $this->redirect("/admin/goods/detail/" . $game->id);
+
     }
 
 }

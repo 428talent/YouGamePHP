@@ -12,6 +12,7 @@ use think\Route;
 
 Route::rule("game/:id", 'game/Index/index');
 Route::rule("admin/goods/detail/:id","admin/Goods/detail");
+Route::rule("admin/goods/edit/:id","admin/Goods/edit");
 return [
     '__pattern__' => [
         'name' => '\w+',

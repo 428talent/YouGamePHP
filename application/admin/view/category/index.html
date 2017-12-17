@@ -43,11 +43,11 @@
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 游戏</span>
+                            <span> 用户组</span>
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="green-on"><a href="/admin/goods/create">+添加</a></li>
+                                <li class="green-on" onclick="onCreateCategoryHandle()">+添加</li>
                                 <li class="green">前天</li>
                                 <li class="blue">本周</li>
                             </ul>
@@ -59,17 +59,17 @@
                             <tr>
                                 <th>ID</th>
                                 <th>游戏名称</th>
-                                <th>分类</th>
                                 <th>创建于</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {volist name="modelList" id="game"}
+                            {volist name="modelList" id="category"}
                             <tr class="odd gradeX">
-                                <td>{$game->id}</td>
-                                <td><a href="/admin/goods/detail/{$game->id}">{$game->name}</a></td>
-                                <td><a href="/admin/goods/detail/{$game->id}">{$game->category->name}</a></td>
-                                <td class="center">{$game->createAt}</td>
+                                <td>{$category->id}</td>
+                                <td><a href="/admin/goods/detail/{$category->id}">{$category->name}</a></td>
+                                <td class="center">{$category->createAt}</td>
+                                <td><button type="button" class="am-btn am-btn-danger" onclick="onDeleteCategoryHandle({$category->id})">删除</button></td>
                             </tr>
                             {/volist}
                             <!-- more data -->
@@ -83,6 +83,21 @@
     </div>
 
 </div>
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="create-category-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">游戏分类</div>
+        <form class="am-modal-bd" id="create-category-form" action="/admin/category/create" method="post">
+            新的分类名称
+            <input type="text" name="name" class="am-modal-prompt-input">
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<!--删除记录确认对话框-->
 <div class="am-modal am-modal-confirm" tabindex="-1" id="delete-category-prompt">
     <div class="am-modal-dialog">
         <div class="am-modal-hd">Amaze UI</div>
@@ -95,7 +110,6 @@
         </div>
     </div>
 </div>
-
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/iscroll.js"></script>
@@ -113,7 +127,28 @@
         "bAutoWidth": true,
         "lengthMenu": [[10, 15, 20, -1], [10, 15, 20, "All"]]
     });
+    const onCreateCategoryHandle = () => {
+        $('#create-category-prompt').modal({
+            relatedTarget: this,
+            onConfirm: (e) => {
+                $('#create-category-form').submit()
+            },
+            onCancel: (e) => {
 
+            }
+        });
+    };
+    const onDeleteCategoryHandle = (id)=>{
+        $('#delete-category-prompt').modal({
+            relatedTarget: this,
+            onConfirm: (e) => {
+                window.location = `/admin/category/delete?id=${id}`
+            },
+            onCancel: (e) => {
+
+            }
+        });
+    }
 </script>
 </body>
 

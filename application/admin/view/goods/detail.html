@@ -47,8 +47,8 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
-                                <li class="green">前天</li>
+                                <li class="red-on" onclick="onDeleteGoodsHandle({$game->id})">删除</li>
+                                <li class="blue-on" onclick="window.location='/admin/goods/edit/{$game->id}'">修改</li>
                                 <li class="blue">本周</li>
                             </ul>
                         </div>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
+                                <li class="red-on" >删除</li>
                                 <li class="green">前天</li>
                                 <li class="blue">本周</li>
                             </ul>
@@ -157,7 +157,18 @@
         </div>
     </div>
 </div>
-
+<div class="am-modal am-modal-confirm" tabindex="-1" id="delete-game-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Amaze UI</div>
+        <div class="am-modal-bd">
+            你，确定要删除这条记录吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/iscroll.js"></script>
@@ -176,6 +187,17 @@
             relatedTarget: this,
             onConfirm: (e) => {
                 $('#add-pic-form').submit()
+            },
+            onCancel: (e) => {
+
+            }
+        });
+    };
+    const onDeleteGoodsHandle = (id)=>{
+        $('#delete-game-prompt').modal({
+            relatedTarget: this,
+            onConfirm: (e) => {
+                window.location = `/admin/goods/delete?id=${id}`
             },
             onCancel: (e) => {
 
