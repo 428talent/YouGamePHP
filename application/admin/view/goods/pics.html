@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body data-type="index">
+<!--顶部导航-->
+{include file="../application/admin/view/common/header.html" /}
+<!--顶部导航-->
+<div class="tpl-page-container tpl-page-header-fixed">
+    <!--侧边导航-->
+    {include file="../application/admin/view/common/sidebar.html" /}
+    <!--侧边导航-->
+
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">
+            {$title}
+        </div>
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="#">系统</a></li>
+            <li class="am-active">用户组</li>
+        </ol>
+
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 用户组</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="red-on">昨天</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="am-table am-table-striped am-table-bordered am-table-compact" id="example">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>图片</th>
+                                <th>游戏名称</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="$game->pics" id="pic"}
+                            <tr class="odd gradeX">
+                                <td>{$pic->id}</td>
+                                <td><img src="{$pic->url}" alt="" style="width: 200px"></td>
+                                <td>{$pic->url}</td>
+
+                            </tr>
+                            {/volist}
+                            <!-- more data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/iscroll.js"></script>
+<script src="/static/js/datatable/amazeui.datatables.js"></script>
+<script src="/static/js/app.js"></script>
+<script>
+    $('#example').DataTable({
+        "paging": true,
+        "iDisplayLength": 3,
+        "bPaginate": true, //翻页功能
+        "bLengthChange": true, //改变每页显示数据数量
+        "bFilter": true, //过滤功能
+        "bSort": true, //排序功能
+        "bInfo": true,//页脚信息
+        "bAutoWidth": true,
+        "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
+    });
+</script>
+</body>
+
+</html>

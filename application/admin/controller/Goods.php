@@ -11,6 +11,7 @@ namespace app\admin\controller;
 
 use app\common\model\GameCategory;
 use app\common\model\GameModel;
+use app\common\model\GamePicModel;
 use DateTime;
 use think\Model;
 
@@ -70,7 +71,38 @@ class Goods extends AdminModelController
                 $game->save();
             }
         }
-//        $this->redirect("/admin/goods");
+        $this->redirect("/admin/goods");
+    }
+
+    public function pics()
+    {
+        $id = $this->request->param("id");
+        $this->assign("game", GameModel::get($id));
+        return $this->fetch("pics");
+    }
+
+    public function detail()
+    {
+        $id = $this->request->param("id");
+        $this->assign("game", GameModel::get($id));
+        return $this->fetch("detail");
+    }
+
+    public function savepic()
+    {
+        $gid = $this->request->post("id");
+        $file = $this->request->file("pic");
+        if ($file) {
+
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'imgs' . DS . 'game' . DS . $gid . DS . 'pics', md5($file->getFilename()));
+            if ($info) {
+                GamePicModel::create([
+                    "url" => "/imgs/game/" . $gid . "/pics/" . $info->getFilename(),
+                    "game_id" => $gid
+                ]);
+            }
+        }
+        $this->redirect("/admin/goods/detail/" . $gid);
     }
 
 }

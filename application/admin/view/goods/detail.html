@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+</head>
+
+<body data-type="index">
+<!--顶部导航-->
+{include file="../application/admin/view/common/header.html" /}
+<!--顶部导航-->
+<div class="tpl-page-container tpl-page-header-fixed">
+    <!--侧边导航-->
+    {include file="../application/admin/view/common/sidebar.html" /}
+    <!--侧边导航-->
+
+    <div class="tpl-content-wrapper">
+        <div class="tpl-content-page-title">
+            {$title}
+        </div>
+        <ol class="am-breadcrumb">
+            <li><a href="#" class="am-icon-home">首页</a></li>
+            <li><a href="#">系统</a></li>
+            <li class="am-active">用户组</li>
+        </ol>
+
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 用户组</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="red-on">昨天</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>{$game->name}</h2>
+                        <img src="{$game->icon}" style="width: 300px;" alt="">
+                        <table class="am-table">
+                            <tbody>
+                            <tr>
+                                <td>发行时间</td>
+                                <td><strong>{$game->relese_time}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>发行商</td>
+                                <td><strong>{$game->publisher}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>游戏类型</td>
+                                <td><strong>{$game->category->name}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>创建时间</td>
+                                <td><strong>{$game->createAt}</strong></td>
+                            </tr>
+                            <tr>
+                                <td>修改时间</td>
+                                <td><strong>{$game->updateAt}</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 游戏介绍</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="red-on">昨天</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <p>{$game->detail}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 预览图</span>
+                        </div>
+                        <div class="actions">
+                            <ul class="actions-btn">
+                                <li class="green-on" onclick="addPicButtonHandle()">+添加</li>
+                                <li class="green">前天</li>
+                                <li class="blue">本周</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-thumbnails">
+                            {volist name="game->pics" id="pic" }
+                            <li>
+                                <div style="background: #eee">
+                                    <img class="am-thumbnail" src="{$pic->url}" style="width: 300px"/>
+                                    <a>删除</a>
+                                </div>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="add-pic-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Amaze UI</div>
+        <form class="am-modal-bd" action="/admin/goods/savepic" id="add-pic-form" enctype="multipart/form-data"
+              method="post">
+            <input type="file" id="doc-form-file" name="pic">
+            <input type="hidden" value="{$game->id}" name="id">
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/iscroll.js"></script>
+<script src="/static/js/datatable/amazeui.datatables.js"></script>
+<script src="/static/js/app.js"></script>
+<script>
+    // $('#doc-form-file').on('change', function () {
+    //     let fileNames = '';
+    //     $.each(this.files, function () {
+    //         fileNames += '<span class="am-badge">' + this.name + '</span>';
+    //     });
+    //     $('#file-list').html(fileNames);
+    // });
+    const addPicButtonHandle = () => {
+        $('#add-pic-prompt').modal({
+            relatedTarget: this,
+            onConfirm: (e) => {
+                $('#add-pic-form').submit()
+            },
+            onCancel: (e) => {
+
+            }
+        });
+    }
+</script>
+</body>
+
+</html>
