@@ -40,9 +40,24 @@ class Category extends AdminModelController
         ]);
         $this->redirect("/admin/category");
     }
-    public function delete(){
+
+    public function delete()
+    {
         $id = $this->request->param("id");
         GameCategory::destroy($id);
+        $this->redirect("/admin/category");
+    }
+
+    public function modify()
+    {
+        $this->validatePostData([
+            "name" => "require"
+        ]);
+
+        $category = new GameCategory();
+        $category->save([
+            "name" => $this->request->post("name")
+        ], ["id" => $this->request->param("id")]);
         $this->redirect("/admin/category");
     }
 }

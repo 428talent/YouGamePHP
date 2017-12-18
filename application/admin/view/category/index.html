@@ -69,7 +69,14 @@
                                 <td>{$category->id}</td>
                                 <td><a href="/admin/goods/detail/{$category->id}">{$category->name}</a></td>
                                 <td class="center">{$category->createAt}</td>
-                                <td><button type="button" class="am-btn am-btn-danger" onclick="onDeleteCategoryHandle({$category->id})">删除</button></td>
+                                <td>
+                                    <button type="button" class="am-btn am-btn-danger"
+                                            onclick="onDeleteCategoryHandle({$category->id})">删除
+                                    </button>
+                                    <button type="button" class="am-btn am-btn-warning"
+                                            onclick="onModifyCategoryHandle({$category->id})">修改
+                                    </button>
+                                </td>
                             </tr>
                             {/volist}
                             <!-- more data -->
@@ -110,6 +117,20 @@
         </div>
     </div>
 </div>
+<!--修改游戏分类对话框-->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="modify-category-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">YouGame</div>
+        <form class="am-modal-bd" id="modify-category-form" method="post">
+            将分类修改为
+            <input type="text" class="am-modal-prompt-input" name="name">
+        </form>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/iscroll.js"></script>
@@ -138,7 +159,7 @@
             }
         });
     };
-    const onDeleteCategoryHandle = (id)=>{
+    const onDeleteCategoryHandle = (id) => {
         $('#delete-category-prompt').modal({
             relatedTarget: this,
             onConfirm: (e) => {
@@ -148,7 +169,21 @@
 
             }
         });
+    };
+    const onModifyCategoryHandle = (id) => {
+        $('#modify-category-prompt').modal({
+            relatedTarget: true,
+            onConfirm: (e) => {
+                const form = $('#modify-category-form');
+                form.attr("action", `/admin/category/modify?id=${id}`);
+                form.submit()
+            },
+            onCancel: (e) => {
+
+            }
+        })
     }
+
 </script>
 </body>
 
