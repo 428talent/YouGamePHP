@@ -15,6 +15,8 @@ Route::rule("admin/goods/detail/:id", "admin/Goods/detail");
 Route::rule("admin/goods/edit/:id", "admin/Goods/edit");
 Route::rule("pay/:id$", "pay/Index/index");
 Route::rule("pay/:id/settlement$", "pay/Settlement/index");
+Route::rule("game/:id$", "detail/Index/index");
+Route::rule("game/:id/buy$", "detail/Index/buy");
 return [
     '__pattern__' => [
         'name' => '\w+',

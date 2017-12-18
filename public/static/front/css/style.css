@@ -344,7 +344,7 @@ ul.am-tabs-nav.am-nav.am-nav-tabs {left:20% ;background: #F5F5F5;right: 40px;}
 .item-inform ,.match,.introduceMain,.am-breadcrumb-slash{max-width: 1200px;}
 .clearfixLeft {margin-left: 10px;width: 400px;}
 /*放大镜*/
-.tb-s310, .tb-s310 a ,.tb-s310, .tb-s310 img { height:400px; width:400px;}
+.tb-s310, .tb-s310 a ,.tb-s310, .tb-s310 img {  width:400px;}
 .clearfixRight {width: 700px;}
 
 /*导航固定*/

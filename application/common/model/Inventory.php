@@ -22,7 +22,9 @@ use think\Model;
 class Inventory extends Model
 {
     protected $table = "inventory";
-
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = 'createAt';
+    protected $updateTime = false;
     public function game()
     {
         return $this->hasOne("GameModel", "game_id");

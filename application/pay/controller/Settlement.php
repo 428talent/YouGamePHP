@@ -10,6 +10,7 @@ namespace app\pay\controller;
 
 
 use app\common\controller\BaseController;
+use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
 use app\common\model\OrderModel;
 
@@ -32,6 +33,12 @@ class Settlement extends BaseController
         $balance = $this->user->balance;
         $balance->amount -= $order->price;
         $balance->save();
+        $order->state = 2;
+        $order->save();
+        Inventory::create([
+            "user_id" => $this->user->id,
+            "game_id" => $order->game->id,
+        ]);
         $this->redirect("/");
     }
 }

@@ -26,6 +26,10 @@ use think\Model;
 class OrderModel extends Model
 {
     protected $table = "order";
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = "createAt";
+    protected $updateTime = "updateAt";
+    protected $readonly = ['createAt', 'updateAt'];
 
     public function log()
     {
