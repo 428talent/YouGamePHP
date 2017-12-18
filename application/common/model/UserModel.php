@@ -50,9 +50,14 @@ class UserModel extends Model
         ]);
     }
 
+    public function checkPassword($password)
+    {
+        return $this->password == sha1(md5(Config::get('salt') . $password));
+    }
+
     public function profile()
     {
-        return $this->hasOne("ProfileModel","user_id");
+        return $this->hasOne("ProfileModel", "user_id");
     }
 
     /**
@@ -82,11 +87,7 @@ WHERE
         return $result != null;
     }
 
-    public function checkPassword(string $password)
-    {
-        $encryptPassword = sha1(md5(Config::get('salt') . $password));
-        return $this->password == $encryptPassword;
-    }
+
 
     public function permissions()
     {

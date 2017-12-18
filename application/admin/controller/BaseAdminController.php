@@ -23,8 +23,12 @@ abstract class BaseAdminController extends BaseController
     protected function _initialize()
     {
         parent::_initialize();
+        if($this->user == null){
+            $this->redirect("/login");
+        }
         $this->assign("sideIndex", $this->getSideIndex());
         $this->assign("title", $this->getTitle());
+
     }
     public function getTitle(){
         return "YouGame";
