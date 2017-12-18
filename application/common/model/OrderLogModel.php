@@ -23,6 +23,9 @@ use think\Model;
 class OrderLogModel extends Model
 {
     protected $table = "order_log";
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = 'createAt';
+    protected $updateTime = false;
 
     public function logOrder()
     {

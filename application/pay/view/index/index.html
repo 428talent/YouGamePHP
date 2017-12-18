@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>结算页面</title>
+
+    <link href="/static/front/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/front/basic/css/demo.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/front/css/cartstyle.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/static/front/css/jsstyle.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="/static/front/js/address.js"></script>
+
+</head>
+
+<body>
+
+<!--顶部导航条 -->
+{include file="../application/user/view/public/header.html" /}
+
+<div class="clear"></div>
+<div class="concent">
+    <!--地址 -->
+    <div class="paycont">
+        <div class="clear"></div>
+        <!--订单 -->
+        <div class="concent">
+            <div id="payTable">
+                <h3>确认订单信息</h3>
+                <div class="cart-table-th">
+                    <div class="wp">
+
+                        <div class="th th-item">
+                            <div class="td-inner">商品信息</div>
+                        </div>
+                        <div class="th th-price">
+                            <div class="td-inner">单价</div>
+                        </div>
+                        <div class="th th-amount">
+                            <div class="td-inner">数量</div>
+                        </div>
+                        <div class="th th-sum">
+                            <div class="td-inner">金额</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+                <tr class="item-list">
+                    <div class="bundle  bundle-last">
+
+                        <div class="bundle-main">
+                            <ul class="item-content clearfix">
+                                <div class="pay-phone">
+                                    <li class="td td-item">
+                                        <div class="item-pic">
+                                            <a href="#" class="J_MakePoint">
+                                                <img src="{$order->game->icon}"
+                                                     class="" style="width: 150px;"></a>
+                                        </div>
+                                        <div class="item-info">
+                                            <div class="item-basic-info">
+                                                <a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">
+                                                    <strong>{$order->game->name}</strong></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="td td-price">
+                                        <div class="item-price price-promo-promo">
+                                            <div class="price-content">
+                                                <em class="J_Price price-now">{$order->price}</em>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                                <li class="td td-amount">
+                                    <div class="amount-wrapper ">
+                                        <div class="item-amount ">
+                                            <span class="phone-title">购买数量</span>
+                                            <div class="sl">
+                                                x1
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="td td-sum">
+                                    <div class="td-inner">
+                                        <em tabindex="0" class="J_ItemSum number">{$order->price}</em>
+                                    </div>
+                                </li>
+                                <li class="td td-oplist">
+
+                                </li>
+
+                            </ul>
+                            <div class="clear"></div>
+
+                        </div>
+                </tr>
+                <div class="clear"></div>
+            </div>
+
+
+        </div>
+        <div class="clear"></div>
+
+        <!--含运费小计 -->
+
+        <!--信息 -->
+        <div class="order-go clearfix">
+            <div class="pay-confirm clearfix">
+                <div class="box">
+                    <div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+                        <span class="price g_price ">
+                                    <span>¥</span> <em class="style-large-bold-red "
+                                                       id="J_ActualFee">{$order->price}</em>
+											</span>
+                    </div>
+
+
+                </div>
+                <form action="/pay/{$order->id}/settlement" method="post" id="bill-form">
+                    <input type="hidden" value="{$order->id}" name="bill">
+                    <div id="holyshit269" class="submitOrder">
+                        <div class="go-btn-wrap" onclick="$('#bill-form').submit()">
+                            <a id="J_Go" class="btn-go" tabindex="0" title="点击此按钮，提交订单"
+                               type="submit">提交订单</a>
+                        </div>
+                    </div>
+                </form>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+</div>
+<div class="footer">
+    <div class="footer-hd">
+        <p>
+            <a href="#">恒望科技</a>
+            <b>|</b>
+            <a href="#">商城首页</a>
+            <b>|</b>
+            <a href="#">支付宝</a>
+            <b>|</b>
+            <a href="#">物流</a>
+        </p>
+    </div>
+    <div class="footer-bd">
+        <p>
+            <a href="#">关于恒望</a>
+            <a href="#">合作伙伴</a>
+            <a href="#">联系我们</a>
+            <a href="#">网站地图</a>
+            <em>© 2015-2025 Hengwang.com 版权所有</em>
+        </p>
+    </div>
+</div>
+</div>
+
+<div class="clear"></div>
+</body>
+
+</html>

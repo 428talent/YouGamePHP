@@ -11,8 +11,10 @@
 use think\Route;
 
 Route::rule("game/:id", 'game/Index/index');
-Route::rule("admin/goods/detail/:id","admin/Goods/detail");
-Route::rule("admin/goods/edit/:id","admin/Goods/edit");
+Route::rule("admin/goods/detail/:id", "admin/Goods/detail");
+Route::rule("admin/goods/edit/:id", "admin/Goods/edit");
+Route::rule("pay/:id$", "pay/Index/index");
+Route::rule("pay/:id/settlement$", "pay/Settlement/index");
 return [
     '__pattern__' => [
         'name' => '\w+',

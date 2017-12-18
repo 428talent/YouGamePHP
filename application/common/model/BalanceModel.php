@@ -21,6 +21,9 @@ use think\Model;
 class BalanceModel extends Model
 {
     protected $table = "balance";
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = false;
+    protected $updateTime = 'last_update';
 
     public function user()
     {

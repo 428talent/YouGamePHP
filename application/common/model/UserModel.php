@@ -65,7 +65,7 @@ class UserModel extends Model
      * @param string $action 权限名
      * @return bool 是否拥有权限
      */
-    public function hasPermission(string $action): bool
+    public function hasPermission($action)
     {
         $result = Db::query("SELECT permission.*
 FROM (

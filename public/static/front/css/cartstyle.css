@@ -45,7 +45,7 @@ body, button, input, select, textarea {
 /*图片*/
 .td-item .item-info {margin: -3px 0px 0px 91px;}
 .item-content .item-pic a {text-align: center;}
-.item-content .item-pic {width: 80px; height: 80px; border: 1px solid #EEE; float: left;overflow: hidden;margin-top:20px;margin-left:3px;}	
+.item-content .item-pic {width: 150px;  border: 1px solid #EEE; float: left;margin-top:20px;margin-left:3px;}
 .td-item .item-basic-info { height: 40px; margin-top:20px; text-align:left}
 /*规格*/
 .td.td-info{position: absolute;left:0px;top:55px;width:100%;overflow: hidden;padding-left: 120px;line-height: 16px;}
