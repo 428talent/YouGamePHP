@@ -50,6 +50,11 @@ class UserModel extends Model
         ]);
     }
 
+    public function inventory()
+    {
+        return $this->hasMany("Inventory", "user_id");
+    }
+
     public function checkPassword($password)
     {
         return $this->password == sha1(md5(Config::get('salt') . $password));
@@ -86,7 +91,6 @@ WHERE
     permission.action =:action_name", ["action_name" => $action]);
         return $result != null;
     }
-
 
 
     public function permissions()

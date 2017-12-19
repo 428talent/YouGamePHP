@@ -16,7 +16,7 @@ class Order extends BaseUserController
     protected $sideNavIndex = "order";
     public function index()
     {
-        $orderList = OrderModel::all();
+        $orderList = $this->user->orders;
         $notPay = array_filter($orderList, function (OrderModel $order): bool {
             return $order->state == 1;
         });

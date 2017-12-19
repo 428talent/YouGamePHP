@@ -27,7 +27,7 @@ class Inventory extends Model
     protected $updateTime = false;
     public function game()
     {
-        return $this->hasOne("GameModel", "game_id");
+        return $this->belongsTo("GameModel", "game_id");
     }
 
     public function user()

@@ -285,8 +285,8 @@
                                     {volist name="payedList" id="payedOrder"}
                                     <div class="order-status5">
                                         <div class="order-title">
-                                            <div class="dd-num">订单编号：<a href="javascript:;">{$order->id}</a></div>
-                                            <span>成交时间：{$order->createAt}</span>
+                                            <div class="dd-num">订单编号：<a href="javascript:;">{$payedOrder->id}</a></div>
+                                            <span>成交时间：{$payedOrder->createAt}</span>
                                         </div>
                                         <div class="order-content">
                                             <div class="order-left">
@@ -294,22 +294,22 @@
                                                     <li class="td td-item">
                                                         <div class="item-pic">
                                                             <a href="#" class="J_MakePoint">
-                                                                <img src="{$order->game->icon}"
+                                                                <img src="{$payedOrder->game->icon}"
                                                                      class="itempic J_ItemImg">
                                                             </a>
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="item-basic-info">
                                                                 <a href="#">
-                                                                    <p>{$order->game->name}</p>
-                                                                    <p class="info-little">{$order->game->publisher}</p>
+                                                                    <p>{$payedOrder->game->name}</p>
+                                                                    <p class="info-little">{$payedOrder->game->publisher}</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
                                                         <div class="item-price">
-                                                            {$order->price}
+                                                            {$payedOrder->price}
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
@@ -329,7 +329,7 @@
                                             <div class="order-right">
                                                 <li class="td td-amount">
                                                     <div class="item-amount">
-                                                        合计：{$order->price}元
+                                                        合计：{$payedOrder->price}元
                                                     </div>
                                                 </li>
                                                 <div class="move-right">

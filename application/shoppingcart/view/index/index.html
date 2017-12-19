@@ -65,8 +65,9 @@
                     <ul class="item-content clearfix" cartItem price="{$item->game->price}">
                         <li class="td td-chk">
                             <div class="cart-checkbox">
-                                <input class="check" id="J_CheckBox_170037950254" name="items[]" value="170037950254"
-                                       type="checkbox" onchange="selectCartItem(this)">
+                                <input class="check" id="J_CheckBox_170037950254" name="cartItemCheckBox"
+                                       value="170037950254"
+                                       type="checkbox">
                                 <label for="J_CheckBox_170037950254"></label>
                             </div>
                         </li>
@@ -169,22 +170,27 @@
     <li><a href="/static/front/person/index.html"><i class="am-icon-user"></i>我的</a></li>
 </div>
 <script>
-    const items = $('[cartItem][cartSelected]');
-    console.dir(items);
-    const refreshPrice = () => {
-        let total = 0;
-        items.each((index, elem) => {
+    $(function () {
+            const items = $('[cartItem]').each(function () {
+                console.log($(this));
+                console.log($(this).children('[name=cartItemCheckBo]'))
+            });
 
-            total += parseInt(elem.getAttribute("price"));
-        });
-        $("#total").text(total)
-    };
-    refreshPrice();
-    const selectCartItem = (elem) => {
-        
-        elem.setAttribute("cartSelected","");
-        refreshPrice();
-    }
+            const refreshPrice = () => {
+                let total = 0;
+                items.each((index, elem) => {
+
+                    total += parseInt(elem.getAttribute("price"));
+                });
+                $("#total").text(total)
+            };
+            refreshPrice();
+            const selectCartItem = (elem) => {
+                elem.setAttribute("cartSelected", "");
+                refreshPrice();
+            }
+        }
+    );
 </script>
 </body>
 
