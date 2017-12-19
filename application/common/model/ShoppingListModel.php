@@ -22,6 +22,9 @@ use think\Model;
 class ShoppingListModel extends Model
 {
     protected $table = 'shopping_list';
+    protected $autoWriteTimestamp = 'datetime';
+    protected $createTime = 'createAt';
+    protected $updateTime = false;
 
     public function game()
     {

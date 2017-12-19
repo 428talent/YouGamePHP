@@ -16,7 +16,26 @@ class Index extends BaseController
     function index()
     {
         $cartItems = $this->user->shoppingList;
-        $this->assign("cartItems",$cartItems);
+        $this->assign("cartItems", $cartItems);
         return $this->fetch("index");
+    }
+
+    public function add()
+    {
+        $this->validatePostData([
+            "id" => "require"
+        ]);
+        ShoppingListModel::create([
+            "game_id" => $this->request->post("id"),
+            "user_id" => $this->user->id
+        ]);
+        $this->redirect("/game/" . $this->request->post("id"));
+    }
+
+    public function delete()
+    {
+        $id = $this->request->param("id");
+        ShoppingListModel::destroy($id);
+        $this->redirect("/shoppingcart");
     }
 }

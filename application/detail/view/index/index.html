@@ -126,7 +126,7 @@
                 <div class="tb-detail-price">
                     <li class="price iteminfo_price">
                         <dt>促销价</dt>
-                        <dd><em>¥</em><b class="sys_item_price">56.90</b></dd>
+                        <dd><em>¥</em><b class="sys_item_price">{$game->price}</b></dd>
                     </li>
                     <div class="clear"></div>
                 </div>
@@ -151,14 +151,16 @@
                 <!--销量-->
                 <ul class="tm-ind-panel">
                     <li class="tm-ind-item tm-ind-sellCount canClick">
-                        <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">{$monthlySellCount}</span></div>
+                        <div class="tm-indcon"><span class="tm-label">月销量</span><span class="tm-count">{$monthlySellCount}</span>
+                        </div>
                     </li>
                     <li class="tm-ind-item tm-ind-sumCount canClick">
                         <div class="tm-indcon"><span class="tm-label">累计销量</span><span class="tm-count">{$totalSellCount}</span>
                         </div>
                     </li>
                     <li class="tm-ind-item tm-ind-reviewCount canClick tm-line3">
-                        <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">{$totalCommentCount}</span></div>
+                        <div class="tm-indcon"><span class="tm-label">累计评价</span><span class="tm-count">{$totalCommentCount}</span>
+                        </div>
                     </li>
                 </ul>
                 <div class="clear"></div>
@@ -214,7 +216,10 @@
                 </li>
                 <li>
                     <div class="clearfix tb-btn tb-btn-basket theme-login">
-                        <a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+                        <form action="/shoppingcart/index/add" method="post" id="add-shoppinglist-form">
+                            <input type="hidden" value="{$game->id}" name="id">
+                        </form>
+                        <a id="LikBasket" title="加入购物车" onclick="$('#add-shoppinglist-form').submit()"><i></i>加入购物车</a>
                     </div>
                 </li>
             </div>
@@ -285,7 +290,7 @@
                                 <h4>商品细节</h4>
                             </div>
                             <div class="twlistNews">
-                               {$game->detail}
+                                {$game->detail}
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -344,7 +349,8 @@
                             <li class="am-comment">
                                 <!-- 评论容器 -->
                                 <a href="">
-                                    <img class="am-comment-avatar" src="/imgs/user/avatar/{$comment->user->profile->avatar}"/>
+                                    <img class="am-comment-avatar"
+                                         src="/imgs/user/avatar/{$comment->user->profile->avatar}"/>
                                     <!-- 评论者头像 -->
                                 </a>
 
