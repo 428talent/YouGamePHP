@@ -34,15 +34,16 @@
 
     <div class="search-bar pr">
         <a name="index_none_header_sysc" href="#"></a>
-        <form>
-            <input id="searchInput" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
+        <form action="/search" method="get">
+            <input id="searchInput" name="key" type="text" placeholder="搜索"
+                   autocomplete="off">
             <input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
         </form>
     </div>
 </div>
 
 
-</div>
+</body>
 <div class="banner">
     <!--轮播 -->
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
@@ -50,7 +51,7 @@
             {volist name="gameList" id="game"}
             <li class="banner1">
                 <a href="../../../../public/static/index/introduction.html">
-                    <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+                    <img src="{$game->icon}" alt="">
                 </a>
             </li>
             {/volist}
@@ -158,8 +159,10 @@
                 {volist name="gameList" id="game"}
                 <div class="am-u-sm-3 ">
 
-                    <div class="activityMain ">
-                        <img src="http://127.0.0.1:9601{$game->icon}" alt="">
+                    <div class="activityMain ">\
+                        <a href="{$game->id}">
+                            <img src="{$game->icon}" alt="">
+                        </a>
                     </div>
 
                 </div>
@@ -175,14 +178,16 @@
 
                 <h4>更新与优惠</h4>
                 <span class="more ">
-                              <a href="# ">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
+                              <a href="#">查看更多<i class="am-icon-angle-right" style="padding-left:10px ;"></i></a>
                         </span>
             </div>
             <div class="am-g am-g-fixed ">
                 {volist name="gameList" id="game"}
                 <div class="am-u-sm-3 ">
                     <div class="activityMain ">
-                        <img src="{$game->icon}" alt="">
+                        <a href="/game/{$game->id}">
+                            <img src="{$game->icon}" alt="">
+                        </a>
                     </div>
 
                 </div>

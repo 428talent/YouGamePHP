@@ -21,7 +21,11 @@ class Index extends BaseController
     public function index()
     {
         $id = $this->request->param("id");
-        $this->assign("game", GameModel::get($id));
+        $game = GameModel::get($id);
+        if ($game == null || $game->enable == false){
+            return abort(404,'页面不存在');
+        }
+        $this->assign("game", $game);
         $model = new OrderModel();
         $startTime = date("Y-m-d H:i:s", strtotime("-1 month"));
         $endTime = date("Y-m-d H:i:s");

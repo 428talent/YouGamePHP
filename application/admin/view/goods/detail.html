@@ -81,6 +81,11 @@
                             </tr>
                             </tbody>
                         </table>
+                        {eq name="game:enable" value="1"}
+                            <a href="/admin/goods/switchenable?id={$game->id}" type="button" class="am-btn am-btn-success">商品可用（点击切换）</a>
+                        {else/}
+                            <a href="/admin/goods/switchenable?id={$game->id}" type="button" class="am-btn am-btn-danger">商品不可用（点击切换）</a>
+                        {/eq}
                     </div>
                 </div>
             </div>

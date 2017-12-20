@@ -10,9 +10,11 @@ class Index extends BaseController
 {
     public function index()
     {
-        $gameList = GameModel::all();
+        $gameList = (new GameModel)
+            ->where("enable", "=", true)
+            ->select();
         $this->assign("gameList", $gameList);
-        $this->assign("tuijian", array_slice($gameList,0,3));
+        $this->assign("tuijian", array_slice($gameList, 0, 3));
         return $this->fetch('index');
 
     }
