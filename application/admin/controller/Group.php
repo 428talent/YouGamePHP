@@ -16,6 +16,14 @@ use think\Model;
 class Group extends AdminModelController
 {
 
+    protected function _initialize()
+    {
+        parent::_initialize();
+        if(!$this->user->superuser){
+            $this->error("当前用户不是超级用户");
+        }
+    }
+
     public function getSideIndex()
     {
         return "user_group";

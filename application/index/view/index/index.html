@@ -50,7 +50,7 @@
         <ul class="am-slides">
             {volist name="gameList" id="game"}
             <li class="banner1">
-                <a href="../../../../public/static/index/introduction.html">
+                <a href="/game/{$game->id}">
                     <img src="{$game->icon}" alt="">
                 </a>
             </li>
@@ -137,7 +137,7 @@
                 <div class="recommendationMain one">
                     <a href="../../../../public/static/index/introduction.html">
                         <div style="overflow: hidden;width: 150px;height: 150px;">
-                            <img src="http://127.0.0.1:9601{$game->icon}" alt="" style="width: 200px">
+                            <img src="{$game->icon}" alt="" style="width: 200px">
                         </div>
                     </a>
                 </div>
@@ -159,8 +159,8 @@
                 {volist name="gameList" id="game"}
                 <div class="am-u-sm-3 ">
 
-                    <div class="activityMain ">\
-                        <a href="{$game->id}">
+                    <div class="activityMain ">
+                        <a href="/game/{$game->id}">
                             <img src="{$game->icon}" alt="">
                         </a>
                     </div>
@@ -198,9 +198,9 @@
         <div class="dibu" align="center">
             <p>正在寻找推荐？<br>
 
-                <a href="/index/index/login">请登录</a>
+                <a href="/login">请登录</a>
 
-                或者<a href="/index/index/register">注册</a>免费加入YouGame
+                或者<a href="/register">注册</a>免费加入YouGame
             </p>
         </div>
 

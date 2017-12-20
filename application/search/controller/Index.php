@@ -21,6 +21,7 @@ class Index extends BaseController
             ->whereLike("name", "%" . $key, "OR")
             ->whereLike("name", $key . "%", "OR")
             ->whereLike("name", $key . "%" . $key, "OR")
+            ->where("enable","=",true)
             ->paginate(30);
         $this->assign("games", $gamelist);
 

@@ -13,6 +13,7 @@ use app\admin\controller\Orderlog;
 use app\common\controller\BaseController;
 use app\common\model\GameCommentModel;
 use app\common\model\GameModel;
+use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
 use app\common\model\OrderModel;
 
@@ -22,8 +23,8 @@ class Index extends BaseController
     {
         $id = $this->request->param("id");
         $game = GameModel::get($id);
-        if ($game == null || $game->enable == false){
-            return abort(404,'页面不存在');
+        if ($game == null || $game->enable == false) {
+            return abort(404, '页面不存在');
         }
         $this->assign("game", $game);
         $model = new OrderModel();
@@ -38,12 +39,23 @@ class Index extends BaseController
             ->where("game_id", "=", $this->request->param("id"))
             ->where("state", "=", 2)
             ->count();
-        $totalCommentCount  = (new GameCommentModel())
-            ->where("game_id","=",$this->request->param("id"))
+        $totalCommentCount = (new GameCommentModel())
+            ->where("game_id", "=", $this->request->param("id"))
             ->count();
-        $this->assign("totalCommentCount",$totalCommentCount);
-        $this->assign("totalSellCount",$totalSellCount);
+        $this->assign("totalCommentCount", $totalCommentCount);
+        $this->assign("totalSellCount", $totalSellCount);
         $this->assign("monthlySellCount", $monthlySellCount);
+        $this->assign("bought", false);
+        if ($this->user != null) {
+            if (
+                (new Inventory())
+                    ->where("user_id", "=", $this->user->id)
+                    ->where("game_id", "=", $id)
+                    ->count() > 1
+            ) {
+                $this->assign("bought", true);
+            }
+        }
         return $this->fetch("index");
     }
 

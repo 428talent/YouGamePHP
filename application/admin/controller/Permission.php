@@ -14,6 +14,14 @@ use think\Model;
 
 class Permission extends AdminModelController
 {
+    protected function _initialize()
+    {
+        parent::_initialize();
+        if (!$this->user->superuser) {
+            $this->error("当前用户不是超级用户");
+        }
+    }
+
     public function getSideIndex()
     {
         return "permission";
@@ -22,6 +30,11 @@ class Permission extends AdminModelController
     public function getTitle()
     {
         return "权限";
+    }
+
+    public function index()
+    {
+        return parent::index();
     }
 
     /**

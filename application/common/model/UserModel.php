@@ -26,6 +26,7 @@ use think\Model;
  * @property ShoppingListModel[] $shoppingList 用户购物车
  * @property GameCommentModel[] comments 用户评论
  * @property OrderModel[] orders 用户订单
+ * @property bool superuser 超级用户
  */
 class UserModel extends Model
 {
