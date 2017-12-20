@@ -156,7 +156,7 @@ span.am-icon-th-list{color:orangered;margin-right:1px ;}
 @media only screen and (min-width:1260px) {
 .am-g-fixed {max-width: 1200px; }
 .search-list{max-width: 1200px;margin:0px auto ;position: relative;}
-.search-content{float: left;width:80%;}
+.search-content{float: left;}
 .search-side{display: block;float: left;width:20%;padding:0px 10px ;}
 .side-title{height: 35px;line-height: 35px;padding: 0px 20px;border-radius: 0px 0px 4px 4px;margin: 10px 0px;box-shadow: 0px 0px 2px #999;text-align: center ;color: #e4393c;font-size:14px ;background:#fff;}
 .search-side li{width: 100%;overflow: hidden;}

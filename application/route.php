@@ -17,6 +17,8 @@ Route::rule("pay/:id$", "pay/Index/index");
 Route::rule("pay/:id/settlement$", "pay/Settlement/index");
 Route::rule("game/:id$", "detail/Index/index");
 Route::rule("game/:id/buy$", "detail/Index/buy");
+Route::rule("/admin/order/log","admin/orderlog/index");
+Route::get("/admin/order/:id","admin/order/detail",[],["id"=>"\d+"]);
 return [
     '__pattern__' => [
         'name' => '\w+',

@@ -45,7 +45,12 @@
                         <i class="am-icon-comments-o"></i>
                     </div>
                     <div class="details">
-                        <div class="number"> {$totalSellToday}</div>
+                        <div class="number">{present name="topSellToday"}
+                            {$topSellToday[0]->sellCount}
+                            {else/}
+                                0
+                            {/present}
+                        </div>
                         <div class="desc"> 今日销售</div>
                     </div>
                     <a class="more" href="#"> 查看更多
@@ -60,7 +65,11 @@
                     </div>
                     <div class="details">
                         <div class="number" style="font-size: 20px">
-                            {$topSellToday->game->name}({$topSellToday->sellCount})
+                            {present name="topSellToday"}
+                                {$topSellToday[0]->game->name}
+                            {else/}
+                                暂无
+                            {/present}
                         </div>
                         <div class="desc"> 销售最多</div>
                     </div>
@@ -187,9 +196,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
 
     </div>

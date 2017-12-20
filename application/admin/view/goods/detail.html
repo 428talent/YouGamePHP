@@ -29,12 +29,13 @@
 
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
-            {$title}
+            {$game->name}
         </div>
         <ol class="am-breadcrumb">
-            <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">系统</a></li>
-            <li class="am-active">用户组</li>
+            <li><a href="/" class="am-icon-home">首页</a></li>
+            <li><a href="/admin">管理</a></li>
+            <li><a href="/admin/game">游戏</a></li>
+            <li class="am-active">{$game->name}</li>
         </ol>
 
         <div class="row">
@@ -49,7 +50,7 @@
                             <ul class="actions-btn">
                                 <li class="red-on" onclick="onDeleteGoodsHandle({$game->id})">删除</li>
                                 <li class="blue-on" onclick="window.location='/admin/goods/edit/{$game->id}'">修改</li>
-                                <li class="blue">本周</li>
+                                <li class="green-on" onclick="window.location='/game/{$game->id}'">查看商店页</li>
                             </ul>
                         </div>
                     </div>

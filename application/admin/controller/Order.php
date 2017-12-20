@@ -24,6 +24,12 @@ class Order extends AdminModelController
         return "订单";
     }
 
+    public function detail()
+    {
+        $id = $this->request->param("id");
+        $this->assign("order",OrderModel::get($id));
+        return $this->fetch("detail");
+    }
 
     /**
      * 获取Model

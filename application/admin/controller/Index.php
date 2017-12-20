@@ -51,7 +51,9 @@ class Index extends BaseAdminController
         $this->assign("newUserToday", $newUserToday);
         $this->assign("incomeToday", $incomeToday);
         $this->assign("totalSellToday", $totalSellToday);
-        $this->assign("topSellToday", $topSellToday[0]);
+        if (count($topSellToday) != 0) {
+            $this->assign("topSellToday", $topSellToday[0]);
+        }
         $this->assign("todaySell", $topSellToday);
         $this->assign("newGames", $newGame);
         return $this->fetch("index");
