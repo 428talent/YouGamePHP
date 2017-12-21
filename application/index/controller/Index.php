@@ -13,7 +13,7 @@ class Index extends BaseController
         $gameList = (new GameModel)
             ->where("enable", "=", true)
             ->select();
-        $this->assign("gameList", $gameList);
+        $this->assign("gameList", array_slice($gameList,0,4));
         $this->assign("tuijian", array_slice($gameList, 0, 3));
         return $this->fetch('index');
 

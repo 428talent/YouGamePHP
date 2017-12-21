@@ -15,6 +15,11 @@
     <link href="/static/front/css/optstyle.css" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" src="/static/front/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/vue.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script type="text/javascript" src="/static/js/shoppingcart.js"></script>
+
 
 </head>
 
@@ -61,13 +66,17 @@
                 </div>
                 <div class="clear"></div>
                 <div class="bundle-main">
+                    <div id="test">
+
+                    </div>
                     {volist name="cartItems" id="item"}
                     <ul class="item-content clearfix" cartItem price="{$item->game->price}">
                         <li class="td td-chk">
                             <div class="cart-checkbox">
                                 <input class="check" id="J_CheckBox_170037950254" name="cartItemCheckBox"
                                        value="170037950254"
-                                       type="checkbox">
+                                       type="checkbox"
+                                       onchange="onSelectChange({$item->id},{$item->game->price})">
                                 <label for="J_CheckBox_170037950254"></label>
                             </div>
                         </li>
@@ -124,7 +133,8 @@
     <div class="float-bar-wrapper">
         <div id="J_SelectAll2" class="select-all J_SelectAll">
             <div class="cart-checkbox">
-                <input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" type="checkbox">
+                <input class="check-all check" id="J_SelectAllCbx2" name="select-all" value="true" onchange=""
+                       type="checkbox">
                 <label for="J_SelectAllCbx2"></label>
             </div>
             <span>全选</span>
@@ -146,8 +156,11 @@
                 <span class="txt">合计:</span>
                 <strong class="price">¥<em id="total">0.00</em></strong>
             </div>
+            <form action="pay/list/settlement" method="post" id="settlementForm">
+                <input type="hidden" id="payGoods" name="goods">
+            </form>
             <div class="btn-area">
-                <a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
+                <a id="J_Go" class="submit-btn submit-btn-disabled" onclick="onSubmitHandle()">
                     <span>结&nbsp;算</span></a>
             </div>
         </div>
@@ -170,27 +183,34 @@
     <li><a href="/static/front/person/index.html"><i class="am-icon-user"></i>我的</a></li>
 </div>
 <script>
-    $(function () {
-            const items = $('[cartItem]').each(function () {
-                console.log($(this));
-                console.log($(this).children('[name=cartItemCheckBo]'))
-            });
+    const itemMap = new Map();
 
-            const refreshPrice = () => {
-                let total = 0;
-                items.each((index, elem) => {
+    const onSelectChange = (id, price) => {
 
-                    total += parseInt(elem.getAttribute("price"));
-                });
-                $("#total").text(total)
-            };
-            refreshPrice();
-            const selectCartItem = (elem) => {
-                elem.setAttribute("cartSelected", "");
-                refreshPrice();
-            }
+        if (itemMap.has(id)) {
+            itemMap.delete(id)
+        } else {
+            itemMap.set(id, price);
         }
-    );
+        refreshTotalMoney();
+    };
+    const refreshTotalMoney = () => {
+        let total = 0;
+        for (let price of itemMap.values()) {
+            total += price;
+        }
+        $("#total").text(total);
+        $("#J_SelectedItemsCount").text(itemMap.size)
+    };
+    const onSubmitHandle = () => {
+        let games = [];
+        for (let gameId of itemMap.keys()) {
+            games.push(gameId)
+        }
+        $('#payGoods').attr("value", JSON.stringify(games));
+        $("#settlementForm").submit()
+    }
+
 </script>
 </body>
 

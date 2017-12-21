@@ -12,8 +12,13 @@ namespace app\admin\controller;
 use app\common\model\TopupLogModel;
 use think\Model;
 
-class TopUpLog extends AdminModelController
+class Topuplog extends AdminModelController
 {
+
+    public function getSideIndex()
+    {
+        return "topup_log";
+    }
 
     /**
      * 获取Model
