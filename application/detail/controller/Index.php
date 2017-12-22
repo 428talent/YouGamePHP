@@ -15,7 +15,7 @@ use app\common\model\GameCommentModel;
 use app\common\model\GameModel;
 use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
-use app\common\model\OrderModel;
+use app\common\model\Order;
 
 class Index extends BaseController
 {
@@ -27,21 +27,17 @@ class Index extends BaseController
             return abort(404, '页面不存在');
         }
         $this->assign("game", $game);
-        $model = new OrderModel();
-        $startTime = date("Y-m-d H:i:s", strtotime("-1 month"));
-        $endTime = date("Y-m-d H:i:s");
-        $monthlySellCount = $model
-            ->whereBetween("createAt", "${startTime},${endTime}")
-            ->where("game_id", "=", $this->request->param("id"))
-            ->where("state", "=", 2)
+        $model = new Order();
+        $startMonthTime = date('Y-m-01', strtotime(date("Y-m-d")));
+        $endMonthTime = date('Y-m-d', strtotime("$startMonthTime +1 month -1 day"));
+        $monthlySellCount = (new Inventory())
+            ->where("game_id", "=", $id)
+            ->where('createAt', 'between time', [$startMonthTime, $endMonthTime])
             ->count();
-        $totalSellCount = $model
-            ->where("game_id", "=", $this->request->param("id"))
-            ->where("state", "=", 2)
-            ->count();
-        $totalCommentCount = (new GameCommentModel())
-            ->where("game_id", "=", $this->request->param("id"))
-            ->count();
+        $totalSellCount = (new Inventory())
+            ->where("game_id", "=", $id)
+            ->count();;
+        $totalCommentCount = 0;
         $this->assign("totalCommentCount", $totalCommentCount);
         $this->assign("totalSellCount", $totalSellCount);
         $this->assign("monthlySellCount", $monthlySellCount);
@@ -63,12 +59,19 @@ class Index extends BaseController
     {
         $id = $this->request->param("id");
         $game = GameModel::get($id);
-        $order = OrderModel::create([
-            "game_id" => $id,
+        $order = new Order();
+        $order->save([
             "user_id" => $this->user->id,
             "state" => 1,
             "price" => $game->price
         ]);
+
+        $order->games()->save([
+            "good_name" => $game->name,
+            "price" => $game->price,
+            "good_id" => $game->id
+        ]);
+
         $this->redirect("/pay/" . $order->id);
     }
 }

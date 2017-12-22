@@ -9,7 +9,7 @@
 namespace app\index\controller;
 
 
-use app\common\model\OrderModel;
+use app\common\model\Order;
 use think\Controller;
 use think\Cookie;
 use app\common\util\OrderState;
@@ -25,7 +25,7 @@ class Order extends Controller
     {
         $game = $this->request->post("game_id");
         $user = Cookie::get("token");
-        OrderModel::create([
+        Order::create([
             "game_id" => $game,
             "user_id" => $user,
             "state" => OrderState::created,

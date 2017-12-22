@@ -58,21 +58,19 @@
                             <tr>
                                 <th>ID</th>
                                 <th>用户</th>
-                                <th>游戏</th>
                                 <th>状态</th>
                                 <th>创建时间</th>
                                 <th>更新时间</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {volist name="modelList" id="group"}
+                            {volist name="modelList" id="order"}
                             <tr class="odd gradeX">
-                                <td>{$group->id}</td>
-                                <td>{$group->user->username}</td>
-                                <td class="center">{$group->game->name}</td>
-                                <td class="center">{$group->state}</td>
-                                <td class="center">{$group->createAt}</td>
-                                <td class="center">{$group->updateAt}</td>
+                                <td><a href="/admin/order/{$order->id}">{$order->id}</a></td>
+                                <td>{$order->user->username}</td>
+                                <td class="center">{$order->state}</td>
+                                <td class="center">{$order->createAt}</td>
+                                <td class="center">{$order->updateAt}</td>
                             </tr>
                             {/volist}
                             <!-- more data -->

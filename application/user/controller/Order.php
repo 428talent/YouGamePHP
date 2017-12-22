@@ -9,18 +9,19 @@
 namespace app\user\controller;
 
 
-use app\common\model\OrderModel;
+use app\common\model\Order as Model;
 
 class Order extends BaseUserController
 {
     protected $sideNavIndex = "order";
+
     public function index()
     {
         $orderList = $this->user->orders;
-        $notPay = array_filter($orderList, function (OrderModel $order): bool {
+        $notPay = array_filter($orderList, function ($order) {
             return $order->state == 1;
         });
-        $payed = array_filter($orderList, function (OrderModel $order): bool {
+        $payed = array_filter($orderList, function ($order) {
             return $order->state == 2;
         });
         $this->assign("orderList", $orderList);

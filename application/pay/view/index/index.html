@@ -53,8 +53,8 @@
                     </div>
                 </div>
                 <div class="clear"></div>
-
-                <tr class="item-list">
+                {volist name="order:games" id="good"}
+                <div class="item-list">
                     <div class="bundle  bundle-last">
 
                         <div class="bundle-main">
@@ -63,20 +63,20 @@
                                     <li class="td td-item">
                                         <div class="item-pic">
                                             <a href="#" class="J_MakePoint">
-                                                <img src="{$order->game->icon}"
+                                                <img src="{$good->good->icon}"
                                                      class="" style="width: 150px;"></a>
                                         </div>
                                         <div class="item-info">
                                             <div class="item-basic-info">
                                                 <a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">
-                                                    <strong>{$order->game->name}</strong></a>
+                                                    <strong>{$good->good_name}</strong></a>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="td td-price">
                                         <div class="item-price price-promo-promo">
                                             <div class="price-content">
-                                                <em class="J_Price price-now">{$order->price}</em>
+                                                <em class="J_Price price-now">{$good->price}</em>
                                             </div>
                                         </div>
                                     </li>
@@ -93,7 +93,7 @@
                                 </li>
                                 <li class="td td-sum">
                                     <div class="td-inner">
-                                        <em tabindex="0" class="J_ItemSum number">{$order->price}</em>
+                                        <em tabindex="0" class="J_ItemSum number">{$good->price}</em>
                                     </div>
                                 </li>
                                 <li class="td td-oplist">
@@ -104,9 +104,10 @@
                             <div class="clear"></div>
 
                         </div>
-                </tr>
+                </div>
                 <div class="clear"></div>
             </div>
+                {/volist}
 
 
         </div>

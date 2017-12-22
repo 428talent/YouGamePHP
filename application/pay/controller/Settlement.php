@@ -12,7 +12,7 @@ namespace app\pay\controller;
 use app\common\controller\BaseController;
 use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
-use app\common\model\OrderModel;
+use app\common\model\Order;
 
 class Settlement extends BaseController
 {
@@ -21,13 +21,23 @@ class Settlement extends BaseController
         $this->validatePostData([
             "bill" => "require"
         ]);
-        $order = OrderModel::get($this->request->post("bill"));
-        if ($this->user->balance->amount < $order->price) {
-            $this->error("余额不足");
+        $order = Order::get($this->request->post("bill"));
+        //检查合计
+        $totalPay = 0;
+
+        foreach ($order->games as $game) {
+            echo $game->good_name;
         }
+        foreach ($order->games as $game) {
+            $totalPay += $game->price;
+            if ($totalPay > $this->user->balance->amount) {
+                $this->error("余额不足");
+            }
+        }
+
         OrderLogModel::create([
             "prev" => $this->user->balance->amount,
-            "pay" => $order->price,
+            "pay" => $totalPay,
             "order_id" => $order->id,
         ]);
         $balance = $this->user->balance;
@@ -35,10 +45,12 @@ class Settlement extends BaseController
         $balance->save();
         $order->state = 2;
         $order->save();
-        Inventory::create([
-            "user_id" => $this->user->id,
-            "game_id" => $order->game->id,
-        ]);
+        foreach ($order->games as $game) {
+            Inventory::create([
+                "user_id" => $this->user->id,
+                "game_id" => $game->good->id,
+            ]);
+        }
         $this->redirect("/");
     }
 }

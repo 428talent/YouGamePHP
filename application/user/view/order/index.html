@@ -79,27 +79,28 @@
                                             <span>成交时间：{$order->createAt}</span>
                                         </div>
                                         <div class="order-content">
+                                            {volist name="order:games" id="game"}
                                             <div class="order-left">
                                                 <ul class="item-list">
                                                     <li class="td td-item">
                                                         <div class="item-pic">
                                                             <a href="#" class="J_MakePoint">
-                                                                <img src="{$order->game->icon}"
+                                                                <img src="{$game->good->icon}"
                                                                      class="itempic J_ItemImg">
                                                             </a>
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="item-basic-info">
                                                                 <a href="#">
-                                                                    <p>{$order->game->name}</p>
-                                                                    <p class="info-little">{$order->game->publisher}</p>
+                                                                    <p>{$game->good->name}</p>
+                                                                    <p class="info-little">{$game->good->publisher}</p>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </li>
                                                     <li class="td td-price">
                                                         <div class="item-price">
-                                                            {$order->price}
+                                                            {$game->good->price}
                                                         </div>
                                                     </li>
                                                     <li class="td td-number">
@@ -113,9 +114,8 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-
-
                                             </div>
+                                            {/volist}
                                             <div class="order-right">
                                                 <li class="td td-amount">
                                                     <div class="item-amount">
@@ -185,20 +185,21 @@
                                             <span>成交时间：{$order->createAt}</span>
                                         </div>
                                         <div class="order-content">
+                                            {volist name="notPayOrder:games" id="notPayGames"}
                                             <div class="order-left">
                                                 <ul class="item-list">
                                                     <li class="td td-item">
                                                         <div class="item-pic">
                                                             <a href="#" class="J_MakePoint">
-                                                                <img src="{$order->game->icon}"
+                                                                <img src="{$notPayGames->good->icon}"
                                                                      class="itempic J_ItemImg">
                                                             </a>
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="item-basic-info">
                                                                 <a href="#">
-                                                                    <p>{$order->game->name}</p>
-                                                                    <p class="info-little">{$order->game->publisher}</p>
+                                                                    <p>{$notPayGames->good->name}</p>
+                                                                    <p class="info-little">{$notPayGames->good->publisher}</p>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -219,9 +220,8 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-
-
                                             </div>
+                                            {/volist}
                                             <div class="order-right">
                                                 <li class="td td-amount">
                                                     <div class="item-amount">
@@ -289,20 +289,21 @@
                                             <span>成交时间：{$payedOrder->createAt}</span>
                                         </div>
                                         <div class="order-content">
+                                            {volist name="payedOrder:games" id="payedGame"}
                                             <div class="order-left">
                                                 <ul class="item-list">
                                                     <li class="td td-item">
                                                         <div class="item-pic">
                                                             <a href="#" class="J_MakePoint">
-                                                                <img src="{$payedOrder->game->icon}"
+                                                                <img src="{$payedGame->good->icon}"
                                                                      class="itempic J_ItemImg">
                                                             </a>
                                                         </div>
                                                         <div class="item-info">
                                                             <div class="item-basic-info">
                                                                 <a href="#">
-                                                                    <p>{$payedOrder->game->name}</p>
-                                                                    <p class="info-little">{$payedOrder->game->publisher}</p>
+                                                                    <p>{$payedGame->good->name}</p>
+                                                                    <p class="info-little">{$payedGame->good->publisher}</p>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -323,9 +324,8 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-
-
                                             </div>
+                                            {/volist}
                                             <div class="order-right">
                                                 <li class="td td-amount">
                                                     <div class="item-amount">

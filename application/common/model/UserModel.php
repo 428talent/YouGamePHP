@@ -25,7 +25,7 @@ use think\Model;
  * @property AuthModel $auth 用户认证
  * @property ShoppingListModel[] $shoppingList 用户购物车
  * @property GameCommentModel[] comments 用户评论
- * @property OrderModel[] orders 用户订单
+ * @property Order[] orders 用户订单
  * @property bool superuser 超级用户
  */
 class UserModel extends Model
@@ -121,7 +121,7 @@ WHERE
 
     public function orders()
     {
-        return $this->hasMany("OrderModel", "user_id");
+        return $this->hasMany("Order", "user_id");
     }
 
     public function groups()

@@ -10,8 +10,9 @@ namespace app\admin\controller;
 
 
 use app\common\model\GameModel;
+use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
-use app\common\model\OrderModel;
+use app\common\model\Order;
 use app\common\model\UserModel;
 use think\Controller;
 
@@ -25,17 +26,12 @@ class Index extends BaseAdminController
     public function index()
     {
         $today = date("y-m-d");
-        $totalSellToday = (new OrderModel())
-            ->whereBetween("updateAt", $today . " 00:00:00," . $today . " 23:59:59")
-            ->where("state", "=", 2)
+        $totalSellToday = (new Inventory())
+            ->whereBetween("createAt", $today . " 00:00:00," . $today . " 23:59:59")
             ->count();
-        $topSellToday = (new OrderModel())
-            ->field("*,count(game_id) as sellCount")
-            ->whereBetween("updateAt", $today . " 00:00:00," . $today . " 23:59:59")
-            ->where("state", "=", 2)
-            ->group("game_id")
-            ->order("sellCount", "DESC")
-            ->limit(10)
+        $topSellToday = (new Inventory())
+            ->field("*,COUNT(*) AS sellCount")
+            ->whereBetween("createAt", $today . " 00:00:00," . $today . " 23:59:59")
             ->select();
 
         $newUserToday = (new UserModel())

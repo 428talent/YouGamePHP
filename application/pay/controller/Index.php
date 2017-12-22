@@ -12,14 +12,14 @@ namespace app\pay\controller;
 use app\common\controller\BaseController;
 use app\common\model\GameModel;
 use app\common\model\OrderLogModel;
-use app\common\model\OrderModel;
+use app\common\model\Order;
 
 class Index extends BaseController
 {
     public function index()
     {
 
-        $this->assign("order", OrderModel::get($this->request->param("id")));
+        $this->assign("order", Order::get($this->request->param("id")));
         return $this->fetch("index");
     }
 

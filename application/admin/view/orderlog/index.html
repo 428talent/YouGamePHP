@@ -29,12 +29,12 @@
 
     <div class="tpl-content-wrapper">
         <div class="tpl-content-page-title">
-            订单
+            订单记录
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            <li><a href="#">订单</a></li>
+            <li class="am-active">订单记录</li>
         </ol>
         <div class="row">
             <div class="am-u-md-12 am-u-sm-24 row-mb">
@@ -42,7 +42,7 @@
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 权限</span>
+                            <span> 订单记录</span>
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
@@ -57,7 +57,6 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>游戏</th>
                                 <th>支付金额</th>
                                 <th>用户</th>
                                 <th>创建日期</th>
@@ -68,7 +67,6 @@
                             {volist name="modelList" id="log"}
                             <tr class="odd gradeX">
                                 <td>{$log->id}</td>
-                                <td>{$log->logOrder->game->name}</td>
                                 <td>{$log->pay}元</td>
                                 <td>{$log->logOrder->user->username}</td>
                                 <td>{$log->createAt}</td>

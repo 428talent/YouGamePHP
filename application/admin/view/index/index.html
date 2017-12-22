@@ -65,11 +65,11 @@
                     </div>
                     <div class="details">
                         <div class="number" style="font-size: 20px">
-                            {present name="topSellToday"}
+                            {eq name="topSellToday:game" value="0"}
                                 {$topSellToday->game->name}
                             {else/}
                                 暂无
-                            {/present}
+                            {/eq}
                         </div>
                         <div class="desc"> 销售最多</div>
                     </div>
@@ -137,17 +137,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {volist name="todaySell" id="order"}
-                            <tr>
-                                <td>
-                                    <img src="/static/img/user01.png" alt="" class="user-pic">
-                                    <a class="user-name" href="#">{$order->game->name}</a>
-                                </td>
-                                <td>{$order->sellCount}</td>
-
-                            </tr>
-                            {/volist}
-
+                            {eq name="topSellToday:game" value="1"}
+                                {volist name="todaySell" id="order"}
+                                <tr>
+                                    <td>
+                                        <a class="user-name" href="#">{$order->game->name}</a>
+                                    </td>
+                                    <td>{$order->sellCount}</td>
+                                </tr>
+                                {/volist}
+                            {/eq}
                             </tbody>
                         </table>
                     </div>

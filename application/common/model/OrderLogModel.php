@@ -18,7 +18,7 @@ use think\Model;
  * @property float prev 交易前的账户余额
  * @property float pay 支付的金额
  * @property \DateTime createAt 创建时间
- * @property OrderModel logOrder 订单
+ * @property Order logOrder 订单
  */
 class OrderLogModel extends Model
 {
@@ -29,6 +29,6 @@ class OrderLogModel extends Model
 
     public function logOrder()
     {
-        return $this->belongsTo("OrderModel", "order_id");
+        return $this->belongsTo("Order", "order_id");
     }
 }

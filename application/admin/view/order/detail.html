@@ -33,8 +33,8 @@
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            <li><a href="#">订单</a></li>
+            <li class="am-active">{$order->id}</li>
         </ol>
         <div class="row">
             <div class="am-u-md-12 am-u-sm-24 row-mb">
@@ -42,14 +42,7 @@
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 用户组</span>
-                        </div>
-                        <div class="actions">
-                            <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
-                                <li class="green">前天</li>
-                                <li class="blue">本周</li>
-                            </ul>
+                            <span> 订单详情</span>
                         </div>
                         <table class="am-table">
                             <tbody>
@@ -60,10 +53,6 @@
                             <tr>
                                 <td>创建用户</td>
                                 <td><strong>{$order->user->username}(UID:{$order->user->id})</strong></td>
-                            </tr>
-                            <tr>
-                                <td>游戏名称</td>
-                                <td><strong>{$order->game->name}(GID:{$order->game->id})</strong></td>
                             </tr>
                             <tr>
                                 <td>订单状态</td>
@@ -91,7 +80,39 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="am-u-md-12 am-u-sm-24 row-mb">
+                <div class="tpl-portlet">
+                    <div class="tpl-portlet-title">
+                        <div class="tpl-caption font-green ">
+                            <i class="am-icon-cloud-download"></i>
+                            <span> 订单商品</span>
+                        </div>
+                        <table class="am-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>名称</th>
+                                    <th>价格</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="order:games" id="good"}
+                            <tr>
+                                <td><strong>{$good->id}</strong></td>
+                                <td><strong>{$good->good_name}</strong></td>
+                                <td><strong>{$good->price}</strong></td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

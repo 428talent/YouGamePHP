@@ -23,7 +23,7 @@ use think\Model;
  * @property  \DateTime updateAt 更新时间
  * @property OrderLogModel log 订单交易记录
  */
-class OrderModel extends Model
+class Order extends Model
 {
     protected $table = "order";
     protected $autoWriteTimestamp = 'datetime';
@@ -44,5 +44,10 @@ class OrderModel extends Model
     public function game()
     {
         return $this->belongsTo("GameModel", "game_id");
+    }
+
+    public function games()
+    {
+        return $this->belongsToMany("OrderGood", "order_m_good","good_id","order_id");
     }
 }

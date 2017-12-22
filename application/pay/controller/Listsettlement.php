@@ -13,7 +13,7 @@ use app\common\controller\BaseController;
 use app\common\model\GameModel;
 use app\common\model\Inventory;
 use app\common\model\OrderLogModel;
-use app\common\model\OrderModel;
+use app\common\model\Order;
 use app\common\model\ShoppingListModel;
 use think\response\Json;
 
@@ -34,7 +34,7 @@ class Listsettlement extends BaseController
             array_push($payGoods, $item);
         }
         foreach ($payGoods as $item) {
-            $order = new OrderModel();
+            $order = new Order();
             $order->save([
                 "state" => 2,
                 "game_id" => $item->game->id,

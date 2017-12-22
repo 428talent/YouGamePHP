@@ -9,9 +9,7 @@
 namespace app\admin\controller;
 
 
-use app\common\model\OrderModel;
-use think\Model;
-
+use app\common\model;
 class Order extends AdminModelController
 {
     public function getSideIndex()
@@ -27,7 +25,7 @@ class Order extends AdminModelController
     public function detail()
     {
         $id = $this->request->param("id");
-        $this->assign("order",OrderModel::get($id));
+        $this->assign("order",model\Order::get($id));
         return $this->fetch("detail");
     }
 
@@ -37,6 +35,6 @@ class Order extends AdminModelController
      */
     public function getModel()
     {
-        return new OrderModel();
+        return new model\Order();
     }
 }
