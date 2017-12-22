@@ -34,8 +34,7 @@
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">分类</a></li>
-            <li class="am-active">内容</li>
+            <li class="am-active">管理</li>
         </ol>
 
         <div class="row">
@@ -65,11 +64,11 @@
                     </div>
                     <div class="details">
                         <div class="number" style="font-size: 20px">
-                            {eq name="topSellToday:game" value="0"}
+                            {present name="topSellToday"}
                                 {$topSellToday->game->name}
                             {else/}
                                 暂无
-                            {/eq}
+                            {/present}
                         </div>
                         <div class="desc"> 销售最多</div>
                     </div>

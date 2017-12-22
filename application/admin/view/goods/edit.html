@@ -35,7 +35,8 @@
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
             <li><a href="#">系统</a></li>
-            <li class="am-active">用户组</li>
+            <li><a href="#">游戏</a></li>
+            <li class="am-active">修改</li>
         </ol>
 
         <div class="row">
@@ -44,13 +45,10 @@
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 用户组</span>
+                            <span>修改信息</span>
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
-                                <li class="green">前天</li>
-                                <li class="blue">本周</li>
                             </ul>
                         </div>
                     </div>
@@ -60,7 +58,6 @@
                                 <label for="game-name" class="am-u-sm-3 am-form-label">游戏名</label>
                                 <div class="am-u-sm-9">
                                     <input type="text" id="game-name" placeholder="游戏名" name="name" value="{$game->name}">
-                                    <small>输入游戏名称</small>
                                 </div>
                             </div>
 
@@ -139,8 +136,6 @@
     </div>
 
 </div>
-
-
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/iscroll.js"></script>
@@ -148,17 +143,6 @@
 <script src="/static/js/timepick/amazeui.datetimepicker.min.js"></script>
 <script src="/static/js/app.js"></script>
 <script>
-    $('#example').DataTable({
-        "paging": true,
-        "iDisplayLength": 3,
-        "bPaginate": true, //翻页功能
-        "bLengthChange": true, //改变每页显示数据数量
-        "bFilter": true, //过滤功能
-        "bSort": true, //排序功能
-        "bInfo": true,//页脚信息
-        "bAutoWidth": true,
-        "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
-    });
     $('#relese-time').datetimepicker({
         format: 'yyyy-mm-dd'
     });

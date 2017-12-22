@@ -33,8 +33,8 @@
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">系统</a></li>
-            <li class="am-active">用户组</li>
+            <li><a href="#">管理</a></li>
+            <li class="am-active">游戏</li>
         </ol>
 
         <div class="row">
@@ -48,8 +48,6 @@
                         <div class="actions">
                             <ul class="actions-btn">
                                 <li class="green-on"><a href="/admin/goods/create">+添加</a></li>
-                                <li class="green">前天</li>
-                                <li class="blue">本周</li>
                             </ul>
                         </div>
                     </div>
@@ -61,6 +59,7 @@
                                 <th>游戏名称</th>
                                 <th>分类</th>
                                 <th>创建于</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,6 +69,7 @@
                                 <td><a href="/admin/goods/detail/{$game->id}">{$game->name}</a></td>
                                 <td><a href="/admin/goods/detail/{$game->id}">{$game->category->name}</a></td>
                                 <td class="center">{$game->createAt}</td>
+                                <td><a class="am-btn am-btn-warning" href="/admin/goods/edit/{$game->id}">修改</a></td>
                             </tr>
                             {/volist}
                             <!-- more data -->
