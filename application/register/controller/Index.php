@@ -9,10 +9,8 @@
 namespace app\register\controller;
 
 use app\common\controller\BaseController;
-use app\common\model\AuthModel;
+use app\common\model\ProfileModel;
 use app\common\model\UserModel;
-use think\Controller;
-use think\Cookie;
 
 class Index extends BaseController
 {
@@ -28,7 +26,14 @@ class Index extends BaseController
             "username" => "require",
             "password" => "require"
         ]);
-        UserModel::createUser($this->request->post("username"), $this->request->post("password"));
+        $newUser = new UserModel();
+        $newUser::createUser($this->request->post("username"), $this->request->post("password"));
+        $newUser = UserModel::get(["username"=>$this->request->post("username")]);
+        ProfileModel::create([
+            "nickname" => $newUser->username,
+            "avatar" => "default.png",
+            "user_id" => $newUser->id
+        ]);
         $this->redirect("/login");
     }
 

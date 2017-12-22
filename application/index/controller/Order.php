@@ -9,7 +9,6 @@
 namespace app\index\controller;
 
 
-use app\common\model\Order;
 use think\Controller;
 use think\Cookie;
 use app\common\util\OrderState;
