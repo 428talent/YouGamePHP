@@ -18,10 +18,6 @@ use think\Controller;
 
 class Index extends BaseAdminController
 {
-    public function test()
-    {
-        return "test";
-    }
 
     public function index()
     {
@@ -31,6 +27,8 @@ class Index extends BaseAdminController
             ->count();
         $topSellToday = (new Inventory())
             ->field("*,COUNT(*) AS sellCount")
+            ->group("game_id")
+            ->order("sellCount","desc")
             ->whereBetween("createAt", $today . " 00:00:00," . $today . " 23:59:59")
             ->select();
 

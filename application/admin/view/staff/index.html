@@ -33,21 +33,20 @@
         </div>
         <ol class="am-breadcrumb">
             <li><a href="#" class="am-icon-home">首页</a></li>
-            <li><a href="#">系统</a></li>
-            <li class="am-active">用户组</li>
+            <li><a href="#">管理</a></li>
+            <li class="am-active">管理员</li>
         </ol>
-
         <div class="row">
             <div class="am-u-md-12 am-u-sm-24 row-mb">
                 <div class="tpl-portlet">
                     <div class="tpl-portlet-title">
                         <div class="tpl-caption font-green ">
                             <i class="am-icon-cloud-download"></i>
-                            <span> 用户组</span>
+                            <span> 管理员</span>
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on" onclick="showAddDialog()">添加</li>
+                                <li class="green-on" onclick="showAddUserDialog()">添加</li>
                             </ul>
                         </div>
                     </div>
@@ -56,15 +55,16 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>用户组名称</th>
-
+                                <th>用户名</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {volist name="modelList" id="group"}
+                            {volist name="staffList" id="staff"}
                             <tr class="odd gradeX">
-                                <td>{$group->id}</td>
-                                <td><a href="/admin/group/edit?id={$group->id}">{$group->group_name}</a></td>
+                                <td>{$staff->id}</td>
+                                <td>{$staff->username}</td>
+                                <td><a class="am-btn am-btn-danger" href="/admin/staff/destaff?uid={$user->id}">删除</a></td>
                             </tr>
                             {/volist}
                             <!-- more data -->
@@ -78,14 +78,14 @@
     </div>
 
 </div>
-<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+<div class="am-modal am-modal-prompt" tabindex="-1" id="add-staff-dialog">
     <div class="am-modal-dialog">
-        <div class="am-modal-hd">Amaze UI</div>
+        <div class="am-modal-hd">YouGame</div>
         <div class="am-modal-bd">
-            <form action="/admin/group/save" id="create-group-form" method="post">
-                <input type="text" name="name" class="am-modal-prompt-input">
+            <form action="/admin/staff/bestaff" method="post" id="add-staff-form">
+                用户名
+                <input type="text" class="am-modal-prompt-input" name="username">
             </form>
-
         </div>
         <div class="am-modal-footer">
             <span class="am-modal-btn" data-am-modal-cancel>取消</span>
@@ -102,23 +102,22 @@
 <script>
     $('#example').DataTable({
         "paging": true,
-        "iDisplayLength": 10,
+        "iDisplayLength": 3,
         "bPaginate": true, //翻页功能
         "bLengthChange": true, //改变每页显示数据数量
         "bFilter": true, //过滤功能
         "bSort": true, //排序功能
         "bInfo": true,//页脚信息
         "bAutoWidth": true,
-        "lengthMenu": [[10, 15, 20, -1], [10, 15, 20, "All"]]
+        "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
     });
-    const showAddDialog = () => {
-        $('#my-prompt').modal({
+    const showAddUserDialog = () => {
+        $('#add-staff-dialog').modal({
             relatedTarget: this,
-            onConfirm: (e) => {
-                $('#create-group-form').submit()
+            onConfirm: function (e) {
+                $("#add-staff-form").submit()
             },
-            onCancel: (e) => {
-
+            onCancel: function (e) {
             }
         });
     }

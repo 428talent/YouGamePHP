@@ -29,7 +29,7 @@ class Index extends BaseController
             "game_id" => $this->request->post("id"),
             "user_id" => $this->user->id
         ]);
-        $this->redirect("/game/" . $this->request->post("id"));
+        $this->redirect("/shoppingcart");
     }
 
     public function delete()

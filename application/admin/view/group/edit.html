@@ -47,7 +47,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-
+                                <li class="green-on" onclick="showAddPermissionDialog()">添加</li>
                             </ul>
                         </div>
                     </div>
@@ -59,14 +59,18 @@
                                 <th>ID</th>
                                 <th>权限名称</th>
                                 <th>Action</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {volist name="$group->permissions" id="permission"}
+                            {volist name="$group:permissions" id="permission"}
                             <tr class="odd gradeX">
                                 <td>{$permission->id}</td>
                                 <td>{$permission->name}</td>
                                 <td class="center">{$permission->action}</td>
+                                <td><a class="am-btn am-btn-danger"
+                                       href="/admin/group/deletepermission?gid={$group->id}&pid={$permission->id}">删除</a>
+                                </td>
                             </tr>
                             {/volist}
                             <!-- more data -->
@@ -86,9 +90,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
-                                <li class="green">前天</li>
-                                <li class="blue">本周</li>
+                                <li class="green-on" onclick="showAddUserDialog()">添加</li>
                             </ul>
                         </div>
                     </div>
@@ -98,6 +100,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>用户名</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -105,6 +108,9 @@
                             <tr class="odd gradeX">
                                 <td>{$user->id}</td>
                                 <td>{$user->username}</td>
+                                <td><a class="am-btn am-btn-danger"
+                                       href="/admin/group/deleteuser?gid={$group->id}&uid={$user->id}">删除</a></td>
+
                             </tr>
                             {/volist}
                             <!-- more data -->
@@ -118,6 +124,46 @@
 
 </div>
 
+<div class="am-modal am-modal-prompt" tabindex="-1" id="add-permission-dialog">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">YouGame</div>
+        <div class="am-modal-bd">
+            <form action="/admin/group/addpermission" id="add-permission-form" method="post">
+                <select data-am-selected name="pid">
+                    {volist name="permissionList" id="permission"}
+                    <option value="{$permission->id}">{$permission->name}</option>
+                    {/volist}
+                    <input value="{$group->id}" name="gid" type="hidden">
+                </select>
+            </form>
+
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="add-user-dialog">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">YouGame</div>
+        <div class="am-modal-bd">
+            <form action="/admin/group/adduser" id="add-user-form" method="post">
+                <select data-am-selected name="uid">
+                    {volist name="userList" id="user"}
+                    <option value="{$user->id}">{$user->username}</option>
+                    {/volist}
+                    <input value="{$group->id}" name="gid" type="hidden">
+                </select>
+            </form>
+
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+        </div>
+    </div>
+</div>
 
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
@@ -147,6 +193,29 @@
         "bAutoWidth": true,
         "lengthMenu": [[3, 4, 5, -1], [3, 4, 5, "All"]]
     });
+    const showAddPermissionDialog = () => {
+        $('#add-permission-dialog').modal({
+            relatedTarget: this,
+            onConfirm: function (e) {
+                $("#add-permission-form").submit()
+            },
+            onCancel: function (e) {
+            }
+        });
+    }
+
+    const showAddUserDialog = () => {
+        $('#add-user-dialog').modal({
+            relatedTarget: this,
+            onConfirm: function (e) {
+                $("#add-user-form").submit()
+            },
+            onCancel: function (e) {
+            }
+        });
+    }
+
+
 </script>
 </body>
 

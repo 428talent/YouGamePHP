@@ -167,12 +167,13 @@ class Goods extends AdminModelController
 
     public function switchEnable()
     {
+        $this->checkUserpermission("ENABLE_GAME");
         $id = $this->request->param("id");
         $game = GameModel::get($id);
         $game->save([
             "enable" => !$game->enable
         ]);
-        $this->redirect("/admin/goods/detail/" . $id);
+//        $this->redirect("/admin/goods/detail/" . $id);
     }
 
 }

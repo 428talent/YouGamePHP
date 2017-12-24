@@ -119,9 +119,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="red-on">昨天</li>
-                                <li class="green">前天</li>
-                                <li class="blue">本周</li>
+
                             </ul>
                         </div>
                     </div>
@@ -136,7 +134,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {eq name="topSellToday:game" value="1"}
                                 {volist name="todaySell" id="order"}
                                 <tr>
                                     <td>
@@ -145,7 +142,7 @@
                                     <td>{$order->sellCount}</td>
                                 </tr>
                                 {/volist}
-                            {/eq}
+
                             </tbody>
                         </table>
                     </div>
@@ -160,9 +157,7 @@
                         </div>
                         <div class="actions">
                             <ul class="actions-btn">
-                                <li class="purple-on">昨天</li>
-                                <li class="green">前天</li>
-                                <li class="dark">本周</li>
+
                             </ul>
                         </div>
 
@@ -181,7 +176,7 @@
                             {volist name="newGames" id="game"}
                             <tr>
                                 <td>
-                                    <a class="user-name" href="#">{$game->name}</a>
+                                    <a class="user-name" href="/admin/goods/detail/{$game->id}">{$game->name}</a>
                                 </td>
                                 <td>{$game->publisher}</td>
                                 <td>{$game->price}</td>
